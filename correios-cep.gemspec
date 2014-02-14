@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = Correios::CEP::VERSION
   spec.authors       = ["Prodis a.k.a. Fernando Hamasaki de Amorim"]
   spec.email         = ["prodis@gmail.com"]
-  spec.description   = %q{Correios CEP gets updated Brazilian address from a zipcode, directly from Correios database. No HTML parsers, no workarounds, no "gambis".}
+  spec.description   = %q{Correios CEP gem gets updated Brazilian address from a zipcode, directly from Correios database. No HTML parsers, no workarounds, no "gambis".}
   spec.summary       = spec.description
   spec.homepage      = "https://github.com/prodis/correios-cep"
   spec.license       = "MIT"

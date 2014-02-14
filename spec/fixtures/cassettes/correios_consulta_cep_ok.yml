@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://200.252.60.209/SigepCliente/AtendeClienteService
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/"><soapenv:Header
+        /><soapenv:Body><cli:consultaCEP><cep>54250610</cep></cli:consultaCEP></soapenv:Body></soapenv:Envelope>
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - text/xml; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "RGF0ZQ==":
+      - !binary |-
+        V2VkLCAxMiBGZWIgMjAxNCAwNDoyNDowMSBHTVQ=
+      !binary "U2VydmVy":
+      - !binary |-
+        QXBhY2hlLzIuMi4zIChSZWQgSGF0KQ==
+      !binary "WC1Qb3dlcmVkLUJ5":
+      - !binary |-
+        U2VydmxldC8yLjUgSlNQLzIuMQ==
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        dGV4dC94bWw7Y2hhcnNldD0idXRmLTgi
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz48UzpFbnZl
+        bG9wZSB4bWxuczpTPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2Fw
+        L2VudmVsb3BlLyI+PFM6Qm9keT48bnMyOmNvbnN1bHRhQ0VQUmVzcG9uc2Ug
+        eG1sbnM6bnMyPSJodHRwOi8vY2xpZW50ZS5iZWFuLm1hc3Rlci5zaWdlcC5i
+        c2IuY29ycmVpb3MuY29tLmJyLyI+PHJldHVybj48YmFpcnJvPkNhdmFsZWly
+        bzwvYmFpcnJvPjxjZXA+NTQyNTA2MTA8L2NlcD48Y2lkYWRlPkphYm9hdMOj
+        byBkb3MgR3VhcmFyYXBlczwvY2lkYWRlPjxjb21wbGVtZW50bz48L2NvbXBs
+        ZW1lbnRvPjxjb21wbGVtZW50bzI+PC9jb21wbGVtZW50bzI+PGVuZD5SdWEg
+        RmVybmFuZG8gQW1vcmltPC9lbmQ+PGlkPjA8L2lkPjx1Zj5QRTwvdWY+PC9y
+        ZXR1cm4+PC9uczI6Y29uc3VsdGFDRVBSZXNwb25zZT48L1M6Qm9keT48L1M6
+        RW52ZWxvcGU+
+    http_version: 
+  recorded_at: Wed, 12 Feb 2014 04:25:10 GMT
+recorded_with: VCR 2.8.0

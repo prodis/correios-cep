@@ -1,6 +1,6 @@
 = correios-cep
 
-Correios CEP
+Correios CEP gem gets updated Brazilian address from a zipcode, directly from Correios database. No HTML parsers, no workarounds, no "gambis".
 
 http://prodis.net.br/images/ruby/2011/correios_logo.png
 
@@ -18,13 +18,80 @@ http://prodis.net.br/images/ruby/2011/correios_logo.png
 
   require 'correios-cep'
 
+  finder = Correios::CEP::AddressFinder.new
+  address = finder.get "54250610"
+  address # =>
+  {
+    :address => "Rua Fernando Amorim",
+    :neighborhood => "Cavaleiro",
+    :city => "Jaboatão dos Guararapes",
+    :state => "PE",
+    :zipcode => "54250610",
+    :complement => ""
+  }
+
 
 == Configurations
 
 === Timeout
 
+For default, the timeout for a request to Correios Web Service is <b>5 seconds</b>. If Correios Web Service does not respond, a <b>Timeout::Error</b> exception will be raised.
+You can configure this timeout using <b>Correios::CEP</b> module.
+
+  Correios::CEP.configure do |config|
+    config.request_timeout = 3  # It configures timeout to 3 seconds
+  end
 
 === Log
+
+For default, each request to Correios Web service is logged to STDOUT, with <b>:info</b> log level, using the gem {LogMe}[http://github.com/prodis/log-me].
+
+Log example:
+  I, [2014-02-14T00:10:12.718413 #76361]  INFO -- : Correios-CEP Request:
+  POST http://200.252.60.209/SigepCliente/AtendeClienteService
+  <?xml version="1.0" encoding="UTF-8"?>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <cli:consultaCEP>
+        <cep>54250610</cep>
+      </cli:consultaCEP>
+    </soapenv:Body>
+  </soapenv:Envelope>
+
+  I, [2014-02-14T00:10:12.969937 #76361]  INFO -- : Correios-CEP Response:
+  HTTP/1.1 200 OK
+  <?xml version='1.0' encoding='UTF-8'?>
+  <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+      <ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">
+        <return>
+          <bairro>Cavaleiro</bairro>
+          <cep>54250610</cep>
+          <cidade>Jaboatão dos Guararapes</cidade>
+          <complemento></complemento>
+          <complemento2></complemento2>
+          <end>Rua Fernando Amorim</end>
+          <id>0</id>
+          <uf>PE</uf>
+        </return>
+      </ns2:consultaCEPResponse>
+    </S:Body>
+  </S:Envelope>
+
+To disable the log and configure other log output, use <b>Correios::CEP</b> module:
+
+  Correios::CEP.configure do |config|
+    config.log_enabled = false   # It disables the log
+    config.logger = Rails.logger # It uses Rails logger
+  end
+
+=== Configuration example
+
+  Correios::CEP.configure do |config|
+    config.logger = Rails.logger
+    config.request_timeout = 3
+  end
 
 
 == Author
