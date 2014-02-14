@@ -7,9 +7,9 @@ http://prodis.net.br/images/ruby/2011/correios_logo.png
 
 {<img src="https://badge.fury.io/rb/correios-cep.png" alt="Gem Version" />}[http://badge.fury.io/rb/correios-cep]
 {<img src="https://travis-ci.org/prodis/correios-cep.png?branch=master" alt="Build Status" />}[https://travis-ci.org/prodis/correios-cep]
+{<img src="https://coveralls.io/repos/prodis/correios-cep/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/prodis/correios-cep]
 {<img src="https://codeclimate.com/github/prodis/correios-cep.png" alt="Code Climate" />}[https://codeclimate.com/github/prodis/correios-cep]
 {<img src="https://gemnasium.com/prodis/correios-cep.png" alt="Dependency Status" />}[https://gemnasium.com/prodis/correios-cep]
-
 
 
 == Installing
