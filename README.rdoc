@@ -1,6 +1,7 @@
 = correios-cep
 
-Correios CEP gem gets updated Brazilian address from a zipcode, directly from Correios database. No HTML parsers, no workarounds, no "gambis".
+Correios CEP gem gets updated Brazilian address from a zipcode, directly from Correios database.
+No HTML parsers, no workarounds, no "gambis".
 
 http://prodis.net.br/images/ruby/2011/correios_logo.png
 
@@ -39,7 +40,7 @@ For default, the timeout for a request to Correios Web Service is <b>5 seconds</
 You can configure this timeout using <b>Correios::CEP</b> module.
 
   Correios::CEP.configure do |config|
-    config.request_timeout = 3  # It configures timeout to 3 seconds
+    config.request_timeout = 3 # It configures timeout to 3 seconds
   end
 
 === Log
@@ -114,7 +115,7 @@ To disable the log and configure other log output, use <b>Correios::CEP</b> modu
 
 (The MIT License)
 
-{Prodis a.k.a. Fernando Hamasaki}[http://prodis.blog.br]
+{Prodis a.k.a. Fernando Hamasaki de Amorim}[http://prodis.blog.br]
 
 http://prodis.net.br/images/prodis_150.gif
 
