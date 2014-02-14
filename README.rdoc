@@ -3,7 +3,7 @@
 Correios CEP gem gets updated Brazilian address from a zipcode, directly from Correios database.
 No HTML parsers, no workarounds, no "gambis".
 
-{<img src="http://prodis.net.br/images/ruby/2011/correios_logo.png" alt="Correios" />}
+http://prodis.net.br/images/ruby/2011/correios_logo.png
 
 {<img src="https://badge.fury.io/rb/correios-cep.png" alt="Gem Version" />}[http://badge.fury.io/rb/correios-cep]
 
@@ -124,8 +124,7 @@ To disable the log and configure other log output, use <b>Correios::CEP</b> modu
 
 {Prodis a.k.a. Fernando Hamasaki de Amorim}[http://prodis.blog.br]
 
-{<img src="http://prodis.net.br/images/prodis_150.gif" alt="Prodis" />}
-
+http://prodis.net.br/images/prodis_150.gif
 
 Copyright (c) 2014 Prodis
 
