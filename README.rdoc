@@ -19,11 +19,11 @@ http://prodis.net.br/images/ruby/2011/correios_logo.png
 
   require 'correios-cep'
 
-  # Instance method
+  # With "get" instance method
   finder = Correios::CEP::AddressFinder.new
   address = finder.get "54250610"
 
-  # Class method
+  # With "get" class method
   address = Correios::CEP::AddressFinder.get "54250610"
 
   address # =>
