@@ -19,8 +19,13 @@ http://prodis.net.br/images/ruby/2011/correios_logo.png
 
   require 'correios-cep'
 
+  # Instance method
   finder = Correios::CEP::AddressFinder.new
   address = finder.get "54250610"
+
+  # Class method
+  address = Correios::CEP::AddressFinder.get "54250610"
+
   address # =>
   {
     :address => "Rua Fernando Amorim",

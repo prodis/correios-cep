@@ -6,6 +6,10 @@ module Correios
         parser.address response
       end
 
+      def self.get(zipcode)
+        self.new.get zipcode
+      end
+
       private
 
       def web_service
