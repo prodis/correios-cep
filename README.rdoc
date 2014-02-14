@@ -7,6 +7,7 @@ http://prodis.net.br/images/ruby/2011/correios_logo.png
 
 {<img src="https://badge.fury.io/rb/correios-cep.png" alt="Gem Version" />}[http://badge.fury.io/rb/correios-cep]
 {<img src="https://codeclimate.com/github/prodis/correios-cep.png" />}[https://codeclimate.com/github/prodis/correios-cep]
+{<img src="https://gemnasium.com/prodis/correios-cep.png" alt="Dependency Status" />}[https://gemnasium.com/prodis/correios-cep]
 
 
 == Installing
