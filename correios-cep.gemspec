@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["prodis@gmail.com"]
   spec.description   = %q{Correios CEP gem gets updated Brazilian address from a zipcode, directly from Correios database. No HTML parsers, no workarounds, no "gambis".}
   spec.summary       = spec.description
-  spec.homepage      = "https://github.com/prodis/correios-cep"
+  spec.homepage      = "http://prodis.blog.br/correios-cep-gem-para-consulta-de-enderecos-por-cep"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
