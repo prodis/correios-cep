@@ -4,13 +4,15 @@ http_interactions:
     method: post
     uri: http://200.252.60.209/SigepCliente/AtendeClienteService
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/"><soapenv:Header
         /><soapenv:Body><cli:consultaCEP><cep>54250610</cep></cli:consultaCEP></soapenv:Body></soapenv:Envelope>
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
       User-Agent:
       - Ruby
       Content-Type:
@@ -18,27 +20,20 @@ http_interactions:
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "RGF0ZQ==":
-      - !binary |-
-        V2VkLCAxMiBGZWIgMjAxNCAwNDoyNDowMSBHTVQ=
-      !binary "U2VydmVy":
-      - !binary |-
-        QXBhY2hlLzIuMi4zIChSZWQgSGF0KQ==
-      !binary "WC1Qb3dlcmVkLUJ5":
-      - !binary |-
-        U2VydmxldC8yLjUgSlNQLzIuMQ==
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        Y2xvc2U=
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        dGV4dC94bWw7Y2hhcnNldD0idXRmLTgi
+      Date:
+      - Mon, 17 Feb 2014 02:25:30 GMT
+      Server:
+      - Apache/2.2.3 (Red Hat)
+      X-Powered-By:
+      - Servlet/2.5 JSP/2.1
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/xml; charset=utf-8
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -54,5 +49,5 @@ http_interactions:
         ZXR1cm4+PC9uczI6Y29uc3VsdGFDRVBSZXNwb25zZT48L1M6Qm9keT48L1M6
         RW52ZWxvcGU+
     http_version: 
-  recorded_at: Wed, 12 Feb 2014 04:25:10 GMT
+  recorded_at: Mon, 17 Feb 2014 01:48:39 GMT
 recorded_with: VCR 2.8.0

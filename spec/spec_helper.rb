@@ -13,7 +13,7 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |config|
-  config.default_cassette_options = { :match_requests_on => [:uri, :method, :body, :headers] }
+  config.default_cassette_options = { :match_requests_on => [:uri, :method, :body] }
   config.cassette_library_dir = 'spec/fixtures/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
