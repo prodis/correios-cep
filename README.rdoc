@@ -1,6 +1,6 @@
 = correios-cep
 
-Current available solutions to find Brazilian addresses by zipcode use an HTML form from Correios web site to perform it, instead of to use an true API.
+Current available solutions to find Brazilian addresses by zipcode use an HTML form from Correios web site to perform it, instead of to use a real API.
 
 That workaround works with an HTTP request to the form, followed by parsing the HTML result page. The huge problem here is when the Correios web site development team decides to modify some HTML element in the result page, even a layout update, it will break the parser logic for result.
 
