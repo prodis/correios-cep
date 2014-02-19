@@ -62,7 +62,7 @@ You can configure this timeout using <b>Correios::CEP</b> module.
 For default, each request to Correios Web service is logged to STDOUT, with <b>:info</b> log level, using the gem {LogMe}[http://github.com/prodis/log-me].
 
 Log example:
-  I, [2014-02-14T00:10:12.718413 #76361]  INFO -- : Correios-CEP Request:
+  I, [2014-02-14T00:10:12.718413 #76361]  INFO -- : [Correios::CEP] Request:
   POST http://200.252.60.209/SigepCliente/AtendeClienteService
   <?xml version="1.0" encoding="UTF-8"?>
   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">
@@ -74,7 +74,7 @@ Log example:
     </soapenv:Body>
   </soapenv:Envelope>
 
-  I, [2014-02-14T00:10:12.969937 #76361]  INFO -- : Correios-CEP Response:
+  I, [2014-02-14T00:10:12.969937 #76361]  INFO -- : [Correios::CEP] Response:
   HTTP/1.1 200 OK
   <?xml version='1.0' encoding='UTF-8'?>
   <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">

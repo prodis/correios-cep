@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.platform              = Gem::Platform::RUBY
   spec.required_ruby_version = Gem::Requirement.new(">= 1.9.3")
 
-  spec.add_dependency "log-me",   "~> 0.0.4"
+  spec.add_dependency "log-me",   "= 0.0.5"
   spec.add_dependency "nokogiri", "~> 1.6"
 
   spec.add_development_dependency "coveralls"

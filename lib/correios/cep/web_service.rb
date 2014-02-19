@@ -51,7 +51,7 @@ module Correios
 
       def log_request(request)
         message = format_message(request) do
-          message =  with_line_break { "Correios-CEP Request:" }
+          message =  with_line_break { "Request:" }
           message << with_line_break { "POST #{URL}" }
         end
 
@@ -60,7 +60,7 @@ module Correios
 
       def log_response(response)
         message = format_message(response) do
-          message =  with_line_break { "Correios-CEP Response:" }
+          message =  with_line_break { "Response:" }
           message << with_line_break { "HTTP/#{response.http_version} #{response.code} #{response.message}" }
         end
 
