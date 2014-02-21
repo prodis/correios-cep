@@ -14,10 +14,10 @@ module Correios
         http = build_http
 
         request = build_request zipcode
-        log_request request
+        Correios::CEP.log_request request, @uri.to_s
 
         response = http.request request
-        log_response response
+        Correios::CEP.log_response response
 
         response.body
       end
@@ -47,33 +47,6 @@ module Correios
               "</cli:consultaCEP>" +
            "</soapenv:Body>" +
         "</soapenv:Envelope>"
-      end
-
-      def log_request(request)
-        message = format_message(request) do
-          message =  with_line_break { "Request:" }
-          message << with_line_break { "POST #{URL}" }
-        end
-
-        Correios::CEP.log(message)
-      end
-
-      def log_response(response)
-        message = format_message(response) do
-          message =  with_line_break { "Response:" }
-          message << with_line_break { "HTTP/#{response.http_version} #{response.code} #{response.message}" }
-        end
-
-        Correios::CEP.log(message)
-      end
-
-      def format_message(http)
-        message = yield
-        message << with_line_break { http.body }
-      end
-
-      def with_line_break
-        "#{yield}\n"
       end
     end
   end
