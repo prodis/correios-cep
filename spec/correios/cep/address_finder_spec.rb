@@ -6,8 +6,8 @@ describe Correios::CEP::AddressFinder do
   let(:address) { { address: "Rua Fernando Amorim" } }
 
   before do
-    Correios::CEP::WebService.any_instance.stub(:request!).with(cep).and_return(web_service_response)
-    Correios::CEP::Parser.any_instance.stub(:address).with(web_service_response).and_return(address)
+    allow_any_instance_of(Correios::CEP::WebService).to receive(:request!).with(cep).and_return(web_service_response)
+    allow_any_instance_of(Correios::CEP::Parser).to receive(:address).with(web_service_response).and_return(address)
   end
 
   describe "#get" do
