@@ -22,3 +22,7 @@ TODO
 
 # For vim:
 *.sw*
+
+# RVM
+.ruby-gemset
+.ruby-version
