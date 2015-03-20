@@ -1,10 +1,10 @@
-require 'net/http'
+require 'net/https'
 require 'uri'
 
 module Correios
   module CEP
     class WebService
-      URL = "http://200.252.60.209/SigepCliente/AtendeClienteService"
+      URL = "https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente"
 
       def initialize
         @uri = URI.parse(URL)
@@ -27,6 +27,8 @@ module Correios
       def build_http
         http = Net::HTTP.new(@uri.host, @uri.port)
         http.open_timeout = Correios::CEP.request_timeout
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         http
       end
 
