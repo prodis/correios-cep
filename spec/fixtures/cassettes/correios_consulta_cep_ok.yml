@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://200.252.60.209/SigepCliente/AtendeClienteService
+    uri: https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
@@ -12,7 +12,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Content-Type:
@@ -23,31 +23,26 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 17 Feb 2014 02:25:30 GMT
-      Server:
-      - Apache/2.2.3 (Red Hat)
-      X-Powered-By:
-      - Servlet/2.5 JSP/2.1
-      Connection:
-      - close
-      Transfer-Encoding:
-      - chunked
+      - Fri, 20 Mar 2015 20:30:48 GMT
       Content-Type:
-      - text/xml; charset=utf-8
+      - text/xml;charset=UTF-8
+      Vary:
+      - Accept-Encoding,User-Agent
+      Content-Length:
+      - '277'
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz48UzpFbnZl
-        bG9wZSB4bWxuczpTPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2Fw
-        L2VudmVsb3BlLyI+PFM6Qm9keT48bnMyOmNvbnN1bHRhQ0VQUmVzcG9uc2Ug
-        eG1sbnM6bnMyPSJodHRwOi8vY2xpZW50ZS5iZWFuLm1hc3Rlci5zaWdlcC5i
-        c2IuY29ycmVpb3MuY29tLmJyLyI+PHJldHVybj48YmFpcnJvPkNhdmFsZWly
-        bzwvYmFpcnJvPjxjZXA+NTQyNTA2MTA8L2NlcD48Y2lkYWRlPkphYm9hdMOj
-        byBkb3MgR3VhcmFyYXBlczwvY2lkYWRlPjxjb21wbGVtZW50bz48L2NvbXBs
-        ZW1lbnRvPjxjb21wbGVtZW50bzI+PC9jb21wbGVtZW50bzI+PGVuZD5SdWEg
-        RmVybmFuZG8gQW1vcmltPC9lbmQ+PGlkPjA8L2lkPjx1Zj5QRTwvdWY+PC9y
-        ZXR1cm4+PC9uczI6Y29uc3VsdGFDRVBSZXNwb25zZT48L1M6Qm9keT48L1M6
-        RW52ZWxvcGU+
+        PHNvYXA6RW52ZWxvcGUgeG1sbnM6c29hcD0iaHR0cDovL3NjaGVtYXMueG1s
+        c29hcC5vcmcvc29hcC9lbnZlbG9wZS8iPjxzb2FwOkJvZHk+PG5zMjpjb25z
+        dWx0YUNFUFJlc3BvbnNlIHhtbG5zOm5zMj0iaHR0cDovL2NsaWVudGUuYmVh
+        bi5tYXN0ZXIuc2lnZXAuYnNiLmNvcnJlaW9zLmNvbS5ici8iPjxyZXR1cm4+
+        PGJhaXJybz5DYXZhbGVpcm88L2JhaXJybz48Y2VwPjU0MjUwNjEwPC9jZXA+
+        PGNpZGFkZT5KYWJvYXTDo28gZG9zIEd1YXJhcmFwZXM8L2NpZGFkZT48Y29t
+        cGxlbWVudG8+PC9jb21wbGVtZW50bz48Y29tcGxlbWVudG8yPjwvY29tcGxl
+        bWVudG8yPjxlbmQ+UnVhIEZlcm5hbmRvIEFtb3JpbTwvZW5kPjxpZD4wPC9p
+        ZD48dWY+UEU8L3VmPjwvcmV0dXJuPjwvbnMyOmNvbnN1bHRhQ0VQUmVzcG9u
+        c2U+PC9zb2FwOkJvZHk+PC9zb2FwOkVudmVsb3BlPg==
     http_version: 
-  recorded_at: Mon, 17 Feb 2014 01:48:39 GMT
-recorded_with: VCR 2.8.0
+  recorded_at: Fri, 20 Mar 2015 20:30:48 GMT
+recorded_with: VCR 2.9.3
