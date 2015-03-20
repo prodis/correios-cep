@@ -1,3 +1,6 @@
+== Version 0.3.0
+- Update: Update Correios Web Service URL.
+
 == Version 0.2.0
 - Warning: Minimal required Ruby version from now is 1.9.3.
 
