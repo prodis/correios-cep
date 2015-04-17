@@ -109,6 +109,19 @@ To disable the log and configure other log output, use <b>Correios::CEP</b> modu
   end
 
 
+== Latest Changes
+
+=== Version 0.3.1
+- Warning: Minimal required Ruby version is 1.9.2 again.
+
+=== Version 0.3.0
+- Update: Update Correios Web Service URL.
+
+==== Update if you have version < 3.0. Correios Web Service URL has changed.
+- {CHANGELOG}[http://github.com/prodis/correios-cep/blob/master/CHANGELOG.rdoc]
+
+
+
 == Author
 - {Fernando Hamasaki de Amorim (prodis)}[http://prodis.blog.br]
 
