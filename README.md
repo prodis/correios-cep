@@ -1,4 +1,4 @@
-= correios-cep
+# correios-cep
 
 Current available solutions to find Brazilian addresses by zipcode use an HTML form from Correios web site to perform it, instead of to use a real API.
 
@@ -6,26 +6,32 @@ This works with an HTTP request to the form, followed by parsing the HTML result
 
 Correios CEP gem solves this problem, getting data directly from Correios database.
 
-http://prodis.net.br/images/ruby/2011/correios_logo.png
+![Correios Logo](http://prodis.net.br/images/ruby/2011/correios_logo.png)
 
-{<img src="https://badge.fury.io/rb/correios-cep.png" alt="Gem Version" />}[http://badge.fury.io/rb/correios-cep]
-{<img src="https://travis-ci.org/prodis/correios-cep.png?branch=master" alt="Build Status" />}[https://travis-ci.org/prodis/correios-cep]
-{<img src="https://coveralls.io/repos/prodis/correios-cep/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/prodis/correios-cep]
-{<img src="https://codeclimate.com/github/prodis/correios-cep.png" alt="Code Climate" />}[https://codeclimate.com/github/prodis/correios-cep]
-{<img src="https://gemnasium.com/prodis/correios-cep.png" alt="Dependency Status" />}[https://gemnasium.com/prodis/correios-cep]
+[![Gem Version](https://badge.fury.io/rb/correios-cep.png)](http://badge.fury.io/rb/correios-cep)
+[![Build Status](https://travis-ci.org/prodis/correios-cep.png?branch=master)](https://travis-ci.org/prodis/correios-cep)
+[![Coverage Status](https://coveralls.io/repos/prodis/correios-cep/badge.png)](https://coveralls.io/r/prodis/correios-cep)
+[![Code Climate](https://codeclimate.com/github/prodis/correios-cep.png)](https://codeclimate.com/github/prodis/correios-cep)
+[![Dependency Status](https://gemnasium.com/prodis/correios-cep.png)](https://gemnasium.com/prodis/correios-cep)
 
+## Installing
 
-== Installing
+### Gemfile
 
-=== Gemfile
+```ruby
   gem 'correios-cep'
+```  
 
-=== Direct installation
+### Direct installation
+
+```console
   $ gem install correios-cep
+```
 
 
-== Using
+## Using
 
+```ruby
   require 'correios-cep'
 
   # With "get" instance method
@@ -44,24 +50,28 @@ http://prodis.net.br/images/ruby/2011/correios_logo.png
     :zipcode => "54250610",
     :complement => ""
   }
+```
 
+## Configurations
 
-== Configurations
+### Timeout
 
-=== Timeout
+For default, the timeout for a request to Correios Web Service is **5 seconds**. If Correios Web Service does not respond, a **Timeout::Error** exception will be raised.
+You can configure this timeout using **Correios::CEP** module.
 
-For default, the timeout for a request to Correios Web Service is <b>5 seconds</b>. If Correios Web Service does not respond, a <b>Timeout::Error</b> exception will be raised.
-You can configure this timeout using <b>Correios::CEP</b> module.
-
+```ruby
   Correios::CEP.configure do |config|
     config.request_timeout = 3 # It configures timeout to 3 seconds
   end
+```  
 
-=== Log
+### Log
 
-For default, each request to Correios Web service is logged to STDOUT, with <b>:info</b> log level, using the gem {LogMe}[http://github.com/prodis/log-me].
+For default, each request to Correios Web service is logged to STDOUT, with **:info** log level, using the gem [LogMe](http://github.com/prodis/log-me).
 
 Log example:
+
+```xml
   I, [2014-02-14T00:10:12.718413 #76361]  INFO -- : [Correios::CEP] Request:
   POST http://200.252.60.209/SigepCliente/AtendeClienteService
   <?xml version="1.0" encoding="UTF-8"?>
@@ -93,50 +103,54 @@ Log example:
       </ns2:consultaCEPResponse>
     </S:Body>
   </S:Envelope>
+```
 
-To disable the log and configure other log output, use <b>Correios::CEP</b> module:
+To disable the log and configure other log output, use **Correios::CEP** module:
 
+```ruby
   Correios::CEP.configure do |config|
     config.log_enabled = false   # It disables the log
     config.logger = Rails.logger # It uses Rails logger
   end
+```  
 
-=== Configuration example
+### Configuration example
 
+```ruby
   Correios::CEP.configure do |config|
     config.logger = Rails.logger
     config.request_timeout = 3
   end
+```
+
+## Author
+- [Fernando Hamasaki de Amorim (prodis)](http://prodis.blog.br)
 
 
-== Author
-- {Fernando Hamasaki de Amorim (prodis)}[http://prodis.blog.br]
+## Contributing to correios-cep
+
+- Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+- Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
+- Fork the project.
+- Start a feature/bugfix branch.
+- Commit and push until you are happy with your contribution.
+- Don't forget to rebase with branch master in main project before submit the pull request.
+- Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+- Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 
-== Contributing to correios-cep
-
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
-* Fork the project.
-* Start a feature/bugfix branch.
-* Commit and push until you are happy with your contribution.
-* Don't forget to rebase with branch master in main project before submit the pull request.
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
-
-
-== Copyright
+## Copyright
 
 (The MIT License)
 
-{Prodis a.k.a. Fernando Hamasaki de Amorim}[http://prodis.blog.br]
+[Prodis a.k.a. Fernando Hamasaki de Amorim](http://prodis.blog.br)
 
-http://prodis.net.br/images/prodis_150.gif
+![Prodis Logo](http://prodis.net.br/images/prodis_150.gif)
 
-Copyright (c) 2014 Prodis
+Copyright &copy; 2014 Prodis
 
 Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
+a copy of this software and associated documentation files (the 
 "Software"), to deal in the Software without restriction, including
 without limitation the rights to use, copy, modify, merge, publish,
 distribute, sublicense, and/or sell copies of the Software, and to
