@@ -2,8 +2,8 @@
 require 'spec_helper'
 
 describe Correios::CEP::Parser do
-  describe "#address" do
-    context "when address is found" do
+  describe '#address' do
+    context 'when address is found' do
       let(:xml) do
         "<?xml version='1.0' encoding='UTF-8'?>" +
         "<S:Envelope>" +
@@ -25,21 +25,21 @@ describe Correios::CEP::Parser do
       end
       let(:expected_address) do
         {
-          address: "Rua Fernando Amorim",
-          neighborhood: "Cavaleiro",
-          city: "Jaboatão dos Guararapes",
-          state: "PE",
-          zipcode: "54250610",
-          complement: "de 1500 até o fim (zona mista)"
+          address: 'Rua Fernando Amorim',
+          neighborhood: 'Cavaleiro',
+          city: 'Jaboatão dos Guararapes',
+          state: 'PE',
+          zipcode: '54250610',
+          complement: 'de 1500 até o fim (zona mista)'
         }
       end
 
-      it "returns address" do
+      it 'returns address' do
         expect(subject.address(xml)).to eq expected_address
       end
     end
 
-    context "when address is not found" do
+    context 'when address is not found' do
       let(:xml) do
         "<?xml version='1.0' encoding='UTF-8'?>" +
         "<S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
@@ -49,7 +49,7 @@ describe Correios::CEP::Parser do
         "</S:Envelope>"
       end
 
-      it "returns nil" do
+      it 'returns nil' do
         expect(subject.address(xml)).to be_nil
       end
     end

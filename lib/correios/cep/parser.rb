@@ -4,17 +4,17 @@ module Correios
   module CEP
     class Parser
       ADDRESS_MAP = {
-        "end"          => :address,
-        "bairro"       => :neighborhood,
-        "cidade"       => :city,
-        "uf"           => :state,
-        "cep"          => :zipcode,
-        "complemento"  => :complement,
-        "complemento2" => :complement2,
+        'end'          => :address,
+        'bairro'       => :neighborhood,
+        'cidade'       => :city,
+        'uf'           => :state,
+        'cep'          => :zipcode,
+        'complemento'  => :complement,
+        'complemento2' => :complement2,
       }.freeze
 
       def address(xml)
-        result = Nokogiri::XML(xml).xpath("//return")
+        result = Nokogiri::XML(xml).xpath('//return')
         return if result.nil? || result.empty?
 
         address = {}
