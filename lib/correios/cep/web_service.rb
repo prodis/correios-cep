@@ -4,38 +4,50 @@ require 'uri'
 module Correios
   module CEP
     class WebService
-      URL = "https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente"
+      URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente'
 
       def initialize
         @uri = URI.parse(URL)
+        @proxy_uri = URI.parse(Correios::CEP.proxy_url)
       end
 
       def request!(zipcode)
         http = build_http
 
-        request = build_request zipcode
-        Correios::CEP.log_request request, @uri.to_s
+        request = build_request(zipcode)
+        Correios::CEP.log_request(request, uri.to_s)
 
-        response = http.request request
-        Correios::CEP.log_response response
+        response = http.request(request)
+        Correios::CEP.log_response(response)
+
+        http.finish if http.started?
 
         response.body
       end
 
       private
 
+      attr_reader :uri, :proxy_uri
+
       def build_http
-        http = Net::HTTP.new(@uri.host, @uri.port)
-        http.open_timeout = Correios::CEP.request_timeout
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        http
+        Net::HTTP.start(
+          uri.host,
+          uri.port,
+          proxy_uri.host,
+          proxy_uri.port,
+          nil,
+          nil,
+          use_ssl: true,
+          verify_mode: OpenSSL::SSL::VERIFY_NONE,
+          open_timeout: Correios::CEP.request_timeout,
+          read_timeout: Correios::CEP.request_timeout
+        )
       end
 
       def build_request(zipcode)
-        request = Net::HTTP::Post.new(@uri.path)
-        request["Content-Type"] = "text/xml; charset=utf-8"
-        request.body = request_body zipcode
+        request = Net::HTTP::Post.new(uri.path)
+        request['Content-Type'] = 'text/xml; charset=utf-8'
+        request.body = request_body(zipcode)
         request
       end
 
