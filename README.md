@@ -1,4 +1,4 @@
-# correios-cep
+# Correios CEP
 
 Current available solutions to find Brazilian addresses by zipcode use an HTML form from Correios web site to perform it, instead of to use a real API.
 
@@ -20,7 +20,7 @@ Correios CEP gem solves this problem, getting data directly from Correios databa
 
 ```ruby
   gem 'correios-cep'
-```  
+```
 
 ### Direct installation
 
@@ -36,10 +36,10 @@ Correios CEP gem solves this problem, getting data directly from Correios databa
 
   # With "get" instance method
   finder = Correios::CEP::AddressFinder.new
-  address = finder.get "54250610"
+  address = finder.get("54250610")
 
   # With "get" class method
-  address = Correios::CEP::AddressFinder.get "54250610"
+  address = Correios::CEP::AddressFinder.get("54250610")
 
   address # =>
   {
@@ -56,14 +56,23 @@ Correios CEP gem solves this problem, getting data directly from Correios databa
 
 ### Timeout
 
-For default, the timeout for a request to Correios Web Service is **5 seconds**. If Correios Web Service does not respond, a **Timeout::Error** exception will be raised.
-You can configure this timeout using **Correios::CEP** module.
+For default, the timeout for a request to Correios Web Service is **5 seconds**. If Correios Web Service does not respond, a `Timeout::Error` exception will be raised.
+You can configure this timeout using `Correios::CEP` module.
 
 ```ruby
   Correios::CEP.configure do |config|
     config.request_timeout = 3 # It configures timeout to 3 seconds
   end
-```  
+```
+
+### HTTP Proxy
+If you need to use an HTTP proxy to HTTP requests, configure the HTTP proxy URL on `Correios::CEP` module.
+
+```ruby
+  Correios::CEP.configure do |config|
+    config.proxy_url = "http://10.20.30.40:8888"
+  end
+```
 
 ### Log
 
@@ -147,7 +156,7 @@ To disable the log and configure other log output, use **Correios::CEP** module:
 
 ![Prodis Logo](http://prodis.net.br/images/prodis_150.gif)
 
-Copyright &copy; 2014 Prodis
+Copyright &copy; 2014-2015 Prodis
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the 
