@@ -1,3 +1,7 @@
+## Version 0.3.2
+- Update: Optional HTTP requests using HTTP proxy.
+- Improvement: Update LogMe gem version to 0.0.9.
+
 ## Version 0.3.1
 - Warning: Minimal required Ruby version is 1.9.2 again.
 
