@@ -1,3 +1,6 @@
+## Version 0.3.3
+- Fix: Downgrade LogMe gem version to 0.0.8, because 0.0.9 does not support Ruby 1.9.2.
+
 ## Version 0.3.2
 - Update: Optional HTTP requests using HTTP proxy.
 - Improvement: Update LogMe gem version to 0.0.9.
