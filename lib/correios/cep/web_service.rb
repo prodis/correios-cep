@@ -11,7 +11,7 @@ module Correios
         @proxy_uri = URI.parse(Correios::CEP.proxy_url)
       end
 
-      def request!(zipcode)
+      def request(zipcode)
         http = build_http
 
         request = build_request(zipcode)

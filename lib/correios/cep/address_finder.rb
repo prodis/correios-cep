@@ -2,12 +2,12 @@ module Correios
   module CEP
     class AddressFinder
       def get(zipcode)
-        response = web_service.request! zipcode
-        parser.address response
+        response = web_service.request(zipcode)
+        parser.address(response)
       end
 
       def self.get(zipcode)
-        self.new.get zipcode
+        self.new.get(zipcode)
       end
 
       private
