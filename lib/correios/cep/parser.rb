@@ -20,7 +20,7 @@ module Correios
 
         address = {}
         return_node.nodes.each do |element|
-          address[ADDRESS_MAP[element.name]] = element.text.to_s if ADDRESS_MAP[element.name]
+          address[ADDRESS_MAP[element.name]] = text_for(element) if ADDRESS_MAP[element.name]
         end
 
         join_complements(address)
@@ -34,6 +34,10 @@ module Correios
         return node if node.nil? || node.name == name
 
         find_node(node.nodes, name)
+      end
+
+      def text_for(element)
+        element.text.to_s.force_encoding(Encoding::UTF_8)
       end
 
       def join_complements(address)
