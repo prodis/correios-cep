@@ -1,3 +1,6 @@
+## Version 0.4.0
+- Improvement: Replace Nokogiri by Ox. Issue #3.
+
 ## Version 0.3.3
 - Fix: Downgrade LogMe gem version to 0.0.8, because 0.0.9 does not support Ruby 1.9.2.
 
