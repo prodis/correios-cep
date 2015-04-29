@@ -1,5 +1,5 @@
 ## Version 0.4.0
-- Improvement: Replace Nokogiri by Ox. Issue #3.
+- Improvement: Replace Nokogiri by Ox. [Issue #3](https://github.com/prodis/correios-cep/issues/3).
 
 ## Version 0.3.3
 - Fix: Downgrade LogMe gem version to 0.0.8, because 0.0.9 does not support Ruby 1.9.2.
@@ -27,7 +27,7 @@
 - Improvement: Update LogMe gem to version 0.0.5 with support to log messages label.
 
 ## Version 0.1.1
-- New: A "get" class method in AddressFinder class.
+- New: A `get` class method in `AddressFinder` class.
 
 ## Version 0.1.0
 - First working version.
