@@ -1,4 +1,4 @@
-require 'nokogiri'
+require 'ox'
 
 module Correios
   module CEP
@@ -14,21 +14,33 @@ module Correios
       }.freeze
 
       def address(xml)
-        result = Nokogiri::XML(xml).xpath('//return')
-        return if result.nil? || result.empty?
+        doc = Ox.parse(xml)
+        return_node = find_node(doc.nodes, 'return')
+        return if return_node.nil?
 
         address = {}
-        result.children.each do |element|
-          address[ADDRESS_MAP[element.name]] = element.text if ADDRESS_MAP[element.name]
+        return_node.nodes.each do |element|
+          address[ADDRESS_MAP[element.name]] = text_for(element) if ADDRESS_MAP[element.name]
         end
 
-        join_complements! address
+        join_complements(address)
         address
       end
 
       private
 
-      def join_complements!(address)
+      def find_node(nodes, name)
+        node = nodes.first
+        return node if node.nil? || node.name == name
+
+        find_node(node.nodes, name)
+      end
+
+      def text_for(element)
+        element.text.to_s.force_encoding(Encoding::UTF_8)
+      end
+
+      def join_complements(address)
         address[:complement] += " #{address.delete(:complement2)}"
         address[:complement].strip!
       end
