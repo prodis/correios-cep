@@ -28,11 +28,11 @@ module Correios
       def format_response(response)
         case response
         when "CEP NAO ENCONTRADO" 
-          raise CEPNotFound.new
+          raise CEPNotFound.new "" 
         when "BUSCA DEFINIDA COMO EXATA, 0 CEP DEVE TER 8 DIGITOS" 
-          raise InvalidCEPFormat.new
+          raise InvalidCEPFormat.new "" 
         when "CEP NAO INFORMADO"
-          raise CEPNotFound.new
+          raise CEPNotFound.new "" 
         else
           response
         end
