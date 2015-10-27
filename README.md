@@ -2,7 +2,7 @@
 
 Current available solutions to find Brazilian addresses by zipcode use an HTML form from Correios web site to perform it, instead of to use a real API.
 
-This works with an HTTP request to the form, followed by parsing the HTML result page. The huge problem here is when the Correios web site development team decides to modify some HTML element in the result page, even a layout update, it will break the parser logic for result.
+The old solution works with an HTTP request to the form, followed by parsing the HTML result page. The huge problem here is when the Correios web site development team decides to modify some HTML element in the result page, even a layout update, it will break the parser logic for result.
 
 Correios CEP gem solves this problem, getting data directly from Correios database.
 
@@ -132,8 +132,15 @@ To disable the log and configure other log output, use **Correios::CEP** module:
   end
 ```
 
+## Changelog
+
+[See the changes in each version.](CHANGELOG.md)
+
+
 ## Author
 - [Fernando Hamasaki de Amorim (prodis)](http://prodis.blog.br)
+
+![Prodis Logo](http://prodis.net.br/images/prodis_150.gif)
 
 
 ## Contributing to correios-cep
@@ -146,34 +153,3 @@ To disable the log and configure other log output, use **Correios::CEP** module:
 - Don't forget to rebase with branch master in main project before submit the pull request.
 - Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 - Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
-
-
-## Copyright
-
-(The MIT License)
-
-[Prodis a.k.a. Fernando Hamasaki de Amorim](http://prodis.blog.br)
-
-![Prodis Logo](http://prodis.net.br/images/prodis_150.gif)
-
-Copyright &copy; 2014-2015 Prodis
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the 
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
