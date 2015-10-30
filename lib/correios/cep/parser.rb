@@ -17,7 +17,7 @@ module Correios
         doc = Ox.parse(xml)
 
         return_node = find_node(doc.nodes, 'return')
-        return if return_node.nil?
+        return {} if return_node.nil?
 
         address = {}
         return_node.nodes.each do |element|

@@ -108,8 +108,8 @@ describe Correios::CEP::Parser do
         "</S:Envelope>"
       end
 
-      it "returns nil" do
-        expect(subject.address(xml)).to be_nil
+      it "returns empty hash" do
+        expect(subject.address(xml)).to eq({})
       end
     end
   end
