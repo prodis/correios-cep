@@ -15,6 +15,7 @@ module Correios
 
       def address(xml)
         doc = Ox.parse(xml)
+
         return_node = find_node(doc.nodes, 'return')
         return if return_node.nil?
 
@@ -30,7 +31,8 @@ module Correios
       private
 
       def find_node(nodes, name)
-        node = nodes.first
+        node = nodes.last
+        return nil unless node.is_a?(Ox::Element)
         return node if node.nil? || node.name == name
 
         find_node(node.nodes, name)

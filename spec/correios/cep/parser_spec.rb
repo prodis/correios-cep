@@ -2,20 +2,20 @@
 require 'spec_helper'
 
 describe Correios::CEP::Parser do
-  describe '#address' do
+  describe "#address" do
     let(:expected_address) do
       {
-        address: 'Rua Fernando Amorim',
-        neighborhood: 'Cavaleiro',
-        city: 'Jaboatão dos Guararapes',
-        state: 'PE',
-        zipcode: '54250610',
-        complement: ''
+        address: "Rua Fernando Amorim",
+        neighborhood: "Cavaleiro",
+        city: "Jaboatão dos Guararapes",
+        state: "PE",
+        zipcode: "54250610",
+        complement: ""
       }
     end
 
-    context 'when address is found' do
-      context 'and does not have complement' do
+    context "when address is found" do
+      context "and does not have complement" do
         let(:xml) do
           "<?xml version='1.0' encoding='UTF-8'?>" +
           "<S:Envelope>" +
@@ -36,7 +36,7 @@ describe Correios::CEP::Parser do
           "</S:Envelope>"
         end
 
-        it 'returns address' do
+        it "returns address" do
           expect(subject.address(xml)).to eq expected_address
         end
       end
@@ -62,8 +62,8 @@ describe Correios::CEP::Parser do
           "</S:Envelope>"
         end
 
-        it 'returns address' do
-          expected_address[:complement] = 'de 1500 até o fim'
+        it "returns address" do
+          expected_address[:complement] = "de 1500 até o fim"
 
           expect(subject.address(xml)).to eq expected_address
         end
@@ -90,8 +90,8 @@ describe Correios::CEP::Parser do
           "</S:Envelope>"
         end
 
-        it 'returns address' do
-          expected_address[:complement] = 'de 1500 até o fim (zona mista)'
+        it "returns address" do
+          expected_address[:complement] = "de 1500 até o fim (zona mista)"
 
           expect(subject.address(xml)).to eq expected_address
         end
@@ -108,7 +108,7 @@ describe Correios::CEP::Parser do
         "</S:Envelope>"
       end
 
-      it 'returns nil' do
+      it "returns nil" do
         expect(subject.address(xml)).to be_nil
       end
     end
