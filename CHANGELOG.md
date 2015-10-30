@@ -1,3 +1,7 @@
+## Version 0.5.0
+- Fix: Handle errors returned from Correios web service. [Issue #10](https://github.com/prodis/correios-cep/issues/10)
+- Improvent: Zipcode input validation.
+
 ## Version 0.4.0
 - Improvement: Replace Nokogiri by Ox. [Issue #3](https://github.com/prodis/correios-cep/issues/3).
 
