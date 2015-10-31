@@ -1,6 +1,6 @@
 # Correios CEP
 
-Current available solutions to find Brazilian addresses by zipcode use an HTML form from Correios web site to perform it, instead of to use a real API.
+Current available solutions to find Brazilian addresses by zipcode use an HTML form from [Correios web site](http://correios.com.br) to perform it, instead of to use a real API.
 
 The old solution works with an HTTP request to the form, followed by parsing the HTML result page. The huge problem here is when the Correios web site development team decides to modify some HTML element in the result page, even a layout update, it will break the parser logic for result.
 
@@ -13,6 +13,7 @@ Correios CEP gem solves this problem, getting data directly from Correios databa
 [![Coverage Status](https://coveralls.io/repos/prodis/correios-cep/badge.svg?branch=master&service=github)](https://coveralls.io/github/prodis/correios-cep?branch=master)
 [![Code Climate](https://codeclimate.com/github/prodis/correios-cep/badges/gpa.svg)](https://codeclimate.com/github/prodis/correios-cep)
 [![Dependency Status](https://gemnasium.com/prodis/correios-cep.svg)](https://gemnasium.com/prodis/correios-cep)
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
 ## Installing
 
