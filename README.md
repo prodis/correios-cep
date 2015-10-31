@@ -6,50 +6,50 @@ The old solution works with an HTTP request to the form, followed by parsing the
 
 Correios CEP gem solves this problem, getting data directly from Correios database.
 
-![Correios Logo](http://prodis.net.br/images/ruby/2011/correios_logo.png)
+![Correios Logo](http://prodis.net.br/images/ruby/2015/correios_logo.png)
 
-[![Gem Version](https://badge.fury.io/rb/correios-cep.png)](http://badge.fury.io/rb/correios-cep)
-[![Build Status](https://travis-ci.org/prodis/correios-cep.png?branch=master)](https://travis-ci.org/prodis/correios-cep)
-[![Coverage Status](https://coveralls.io/repos/prodis/correios-cep/badge.png)](https://coveralls.io/r/prodis/correios-cep)
-[![Code Climate](https://codeclimate.com/github/prodis/correios-cep.png)](https://codeclimate.com/github/prodis/correios-cep)
-[![Dependency Status](https://gemnasium.com/prodis/correios-cep.png)](https://gemnasium.com/prodis/correios-cep)
+[![Gem Version](https://badge.fury.io/rb/correios-cep.svg)](http://badge.fury.io/rb/correios-cep)
+[![Build Status](https://travis-ci.org/prodis/correios-cep.svg?branch=master)](https://travis-ci.org/prodis/correios-cep)
+[![Coverage Status](https://coveralls.io/repos/prodis/correios-cep/badge.svg?branch=master&service=github)](https://coveralls.io/github/prodis/correios-cep?branch=master)
+[![Code Climate](https://codeclimate.com/github/prodis/correios-cep/badges/gpa.svg)](https://codeclimate.com/github/prodis/correios-cep)
+[![Dependency Status](https://gemnasium.com/prodis/correios-cep.svg)](https://gemnasium.com/prodis/correios-cep)
 
 ## Installing
 
 ### Gemfile
 
 ```ruby
-  gem 'correios-cep'
+gem 'correios-cep'
 ```
 
 ### Direct installation
 
 ```console
-  $ gem install correios-cep
+$ gem install correios-cep
 ```
 
 
 ## Using
 
 ```ruby
-  require 'correios-cep'
+require 'correios-cep'
 
-  # With "get" instance method
-  finder = Correios::CEP::AddressFinder.new
-  address = finder.get("54250610")
+# With "get" instance method
+finder = Correios::CEP::AddressFinder.new
+address = finder.get("54250610")
 
-  # With "get" class method
-  address = Correios::CEP::AddressFinder.get("54250610")
+# With "get" class method
+address = Correios::CEP::AddressFinder.get("54250610")
 
-  address # =>
-  {
-    :address => "Rua Fernando Amorim",
-    :neighborhood => "Cavaleiro",
-    :city => "Jaboatão dos Guararapes",
-    :state => "PE",
-    :zipcode => "54250610",
-    :complement => ""
-  }
+address # =>
+{
+  :address => "Rua Fernando Amorim",
+  :neighborhood => "Cavaleiro",
+  :city => "Jaboatão dos Guararapes",
+  :state => "PE",
+  :zipcode => "54250610",
+  :complement => ""
+}
 ```
 
 ## Configurations
@@ -60,18 +60,18 @@ For default, the timeout for a request to Correios Web Service is **5 seconds**.
 You can configure this timeout using `Correios::CEP` module.
 
 ```ruby
-  Correios::CEP.configure do |config|
-    config.request_timeout = 3 # It configures timeout to 3 seconds
-  end
+Correios::CEP.configure do |config|
+  config.request_timeout = 3 # It configures timeout to 3 seconds
+end
 ```
 
 ### HTTP Proxy
 If you need to use an HTTP proxy to HTTP requests, configure the HTTP proxy URL on `Correios::CEP` module.
 
 ```ruby
-  Correios::CEP.configure do |config|
-    config.proxy_url = "http://10.20.30.40:8888"
-  end
+Correios::CEP.configure do |config|
+  config.proxy_url = "http://10.20.30.40:8888"
+end
 ```
 
 ### Log
@@ -81,55 +81,55 @@ For default, each request to Correios Web service is logged to STDOUT, with **:i
 Log example:
 
 ```xml
-  I, [2014-02-14T00:10:12.718413 #76361]  INFO -- : [Correios::CEP] Request:
-  POST http://200.252.60.209/SigepCliente/AtendeClienteService
-  <?xml version="1.0" encoding="UTF-8"?>
-  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">
-    <soapenv:Header />
-    <soapenv:Body>
-      <cli:consultaCEP>
-        <cep>54250610</cep>
-      </cli:consultaCEP>
-    </soapenv:Body>
-  </soapenv:Envelope>
+I, [2014-02-14T00:10:12.718413 #76361]  INFO -- : [Correios::CEP] Request:
+POST http://200.252.60.209/SigepCliente/AtendeClienteService
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">
+  <soapenv:Header />
+  <soapenv:Body>
+    <cli:consultaCEP>
+      <cep>54250610</cep>
+    </cli:consultaCEP>
+  </soapenv:Body>
+</soapenv:Envelope>
 
-  I, [2014-02-14T00:10:12.969937 #76361]  INFO -- : [Correios::CEP] Response:
-  HTTP/1.1 200 OK
-  <?xml version='1.0' encoding='UTF-8'?>
-  <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-    <S:Body>
-      <ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">
-        <return>
-          <bairro>Cavaleiro</bairro>
-          <cep>54250610</cep>
-          <cidade>Jaboatão dos Guararapes</cidade>
-          <complemento></complemento>
-          <complemento2></complemento2>
-          <end>Rua Fernando Amorim</end>
-          <id>0</id>
-          <uf>PE</uf>
-        </return>
-      </ns2:consultaCEPResponse>
-    </S:Body>
-  </S:Envelope>
+I, [2014-02-14T00:10:12.969937 #76361]  INFO -- : [Correios::CEP] Response:
+HTTP/1.1 200 OK
+<?xml version='1.0' encoding='UTF-8'?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+  <S:Body>
+    <ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">
+      <return>
+        <bairro>Cavaleiro</bairro>
+        <cep>54250610</cep>
+        <cidade>Jaboatão dos Guararapes</cidade>
+        <complemento></complemento>
+        <complemento2></complemento2>
+        <end>Rua Fernando Amorim</end>
+        <id>0</id>
+        <uf>PE</uf>
+      </return>
+    </ns2:consultaCEPResponse>
+  </S:Body>
+</S:Envelope>
 ```
 
 To disable the log and configure other log output, use **Correios::CEP** module:
 
 ```ruby
-  Correios::CEP.configure do |config|
-    config.log_enabled = false   # It disables the log
-    config.logger = Rails.logger # It uses Rails logger
-  end
-```  
+Correios::CEP.configure do |config|
+  config.log_enabled = false   # It disables the log
+  config.logger = Rails.logger # It uses Rails logger
+end
+```
 
 ### Configuration example
 
 ```ruby
-  Correios::CEP.configure do |config|
-    config.logger = Rails.logger
-    config.request_timeout = 3
-  end
+Correios::CEP.configure do |config|
+  config.logger = Rails.logger
+  config.request_timeout = 3
+end
 ```
 
 ## Changelog
@@ -137,10 +137,16 @@ To disable the log and configure other log output, use **Correios::CEP** module:
 [See the changes in each version.](CHANGELOG.md)
 
 
-## Author
+## Credits
+
+### Author
 - [Fernando Hamasaki de Amorim (prodis)](http://prodis.blog.br)
 
 ![Prodis Logo](http://prodis.net.br/images/prodis_150.gif)
+
+### Contributors
+- [Gabriel Givigier Guimarães (givigier)](https://github.com/givigier)
+- [Maury M. Marques (maurymmarques)](https://github.com/maurymmarques)
 
 
 ## Contributing to correios-cep
