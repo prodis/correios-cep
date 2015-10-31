@@ -13,7 +13,7 @@ Correios CEP gem solves this problem, getting data directly from Correios databa
 [![Coverage Status](https://coveralls.io/repos/prodis/correios-cep/badge.svg?branch=master&service=github)](https://coveralls.io/github/prodis/correios-cep?branch=master)
 [![Code Climate](https://codeclimate.com/github/prodis/correios-cep/badges/gpa.svg)](https://codeclimate.com/github/prodis/correios-cep)
 [![Dependency Status](https://gemnasium.com/prodis/correios-cep.svg)](https://gemnasium.com/prodis/correios-cep)
-[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
+[![GitHub license](https://img.shields.io/apm/l/vim-mode.svg)](LICENSE)
 
 ## Installing
 
