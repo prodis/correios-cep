@@ -2,7 +2,9 @@ module Correios
   module CEP
     class AddressFinder
       def get(zipcode)
+        zipcode = zipcode.to_s.strip
         validate(zipcode)
+
         response = web_service.request(zipcode)
         parser.address(response)
       end
@@ -21,12 +23,9 @@ module Correios
         @parser ||= Correios::CEP::Parser.new
       end
 
-      private
-
       def validate(zipcode)
-        if zipcode.to_s.strip.empty? || !zipcode.to_s.match(/\A\d{5}-?\d{3}\z/)
-          raise ArgumentError.new('invalid cep format')
-        end
+        raise ArgumentError.new('zipcode is required') if zipcode.empty?
+        raise ArgumentError.new('zipcode in invalid format (valid format: 00000-000)') unless zipcode.match(/\A\d{5}-?\d{3}\z/)
       end
     end
   end
