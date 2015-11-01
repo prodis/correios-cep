@@ -25,7 +25,7 @@ module Correios
 
       def validate(zipcode)
         if zipcode.to_s.strip.empty? || !zipcode.to_s.match(/\A\d{5}-?\d{3}\z/)
-          raise ArgumentError.new("invalid cep format")
+          raise ArgumentError.new('invalid cep format')
         end
       end
     end

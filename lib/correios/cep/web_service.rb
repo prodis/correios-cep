@@ -52,15 +52,15 @@ module Correios
       end
 
       def request_body(zipcode)
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:cli=\"http://cliente.bean.master.sigep.bsb.correios.com.br/\">" +
-           "<soapenv:Header />" +
-           "<soapenv:Body>" +
-              "<cli:consultaCEP>" +
+        '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">' +
+           '<soapenv:Header />' +
+           '<soapenv:Body>' +
+              '<cli:consultaCEP>' +
                 "<cep>#{zipcode}</cep>" +
-              "</cli:consultaCEP>" +
-           "</soapenv:Body>" +
-        "</soapenv:Envelope>"
+              '</cli:consultaCEP>' +
+           '</soapenv:Body>' +
+        '</soapenv:Envelope>'
       end
     end
   end
