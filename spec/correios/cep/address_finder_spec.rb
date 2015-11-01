@@ -5,10 +5,15 @@ describe Correios::CEP::AddressFinder do
     let(:cep) { '54250610' }
     let(:web_service_response) { '<end>Rua Fernando Amorim</end>' }
     let(:address) { { address: 'Rua Fernando Amorim' } }
+    let(:web_service) { double(Correios::CEP::WebService) }
+    let(:parser) { double(Correios::CEP::Parser) }
+    let(:dependencies) { { web_service: web_service, parser: parser } }
+
+    subject { described_class.new(dependencies) }
 
     before do
-      allow_any_instance_of(Correios::CEP::WebService).to receive(:request).with(cep){ web_service_response }
-      allow_any_instance_of(Correios::CEP::Parser).to receive(:address).with(web_service_response){ address }
+      allow(web_service).to receive(:request).with(cep).and_return(web_service_response)
+      allow(parser).to receive(:address).with(web_service_response).and_return(address)
     end
 
     describe '#get' do
@@ -21,7 +26,7 @@ describe Correios::CEP::AddressFinder do
       subject { described_class }
 
       it 'returns address' do
-        expect(subject.get(cep)).to eq address
+        expect(subject.get(cep, dependencies)).to eq address
       end
     end
   end

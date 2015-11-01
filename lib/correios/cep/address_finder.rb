@@ -1,6 +1,11 @@
 module Correios
   module CEP
     class AddressFinder
+      def initialize(args = {})
+        @web_service = args.fetch(:web_service, Correios::CEP::WebService.new)
+        @parser = args.fetch(:parser, Correios::CEP::Parser.new)
+      end
+
       def get(zipcode)
         zipcode = zipcode.to_s.strip
         validate(zipcode)
@@ -9,19 +14,13 @@ module Correios
         parser.address(response)
       end
 
-      def self.get(zipcode)
-        self.new.get(zipcode)
+      def self.get(zipcode, args = {})
+        self.new(args).get(zipcode)
       end
 
       private
 
-      def web_service
-        @web_service ||= Correios::CEP::WebService.new
-      end
-
-      def parser
-        @parser ||= Correios::CEP::Parser.new
-      end
+      attr_reader :web_service, :parser
 
       def validate(zipcode)
         raise ArgumentError.new('zipcode is required') if zipcode.empty?
