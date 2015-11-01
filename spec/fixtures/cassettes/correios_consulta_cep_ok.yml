@@ -23,7 +23,9 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 20 Mar 2015 20:30:48 GMT
+      - Sun, 01 Nov 2015 03:03:20 GMT
+      Server:
+      - Apache/2.4.10 (Debian)
       Content-Type:
       - text/xml;charset=UTF-8
       Vary:
@@ -44,5 +46,5 @@ http_interactions:
         ZD48dWY+UEU8L3VmPjwvcmV0dXJuPjwvbnMyOmNvbnN1bHRhQ0VQUmVzcG9u
         c2U+PC9zb2FwOkJvZHk+PC9zb2FwOkVudmVsb3BlPg==
     http_version: 
-  recorded_at: Fri, 20 Mar 2015 20:30:48 GMT
+  recorded_at: Sun, 01 Nov 2015 03:03:21 GMT
 recorded_with: VCR 2.9.3

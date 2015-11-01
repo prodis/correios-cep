@@ -10,7 +10,7 @@ describe Correios::CEP::WebService do
       Correios::CEP.log_enabled = true
     end
 
-    it 'returns HTTP response body from Correios Web Service' do
+    it 'returns HTTP response body from Correios web service' do
       result = subject.request(cep)
       expect(result).to include('Rua Fernando Amorim')
     end
