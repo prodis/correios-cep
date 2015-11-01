@@ -17,9 +17,8 @@ describe Correios::CEP::Parser do
     context 'when address is found' do
       context 'and does not have complement' do
         let(:xml) do
-          '<?xml version="1.0" encoding="UTF-8"?>' +
-          '<S:Envelope>' +
-            '<S:Body>' +
+          '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+            '<soap:Body>' +
               '<ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">' +
                 '<return>' +
                   '<bairro>Cavaleiro</bairro>' +
@@ -32,8 +31,8 @@ describe Correios::CEP::Parser do
                   '<uf>PE</uf>' +
                 '</return>' +
               '</ns2:consultaCEPResponse>' +
-            '</S:Body>' +
-          '</S:Envelope>'
+            '</soap:Body>' +
+          '</soap:Envelope>'
         end
 
         it 'returns address' do
@@ -43,9 +42,8 @@ describe Correios::CEP::Parser do
 
       context 'and has one complement' do
         let(:xml) do
-          '<?xml version="1.0" encoding="UTF-8"?>' +
-          '<S:Envelope>' +
-            '<S:Body>' +
+          '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+            '<soap:Body>' +
               '<ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">' +
                 '<return>' +
                   '<bairro>Cavaleiro</bairro>' +
@@ -58,8 +56,8 @@ describe Correios::CEP::Parser do
                   '<uf>PE</uf>' +
                 '</return>' +
               '</ns2:consultaCEPResponse>' +
-            '</S:Body>' +
-          '</S:Envelope>'
+            '</soap:Body>' +
+          '</soap:Envelope>'
         end
 
         it 'returns address' do
@@ -71,9 +69,8 @@ describe Correios::CEP::Parser do
 
       context 'and has two complements' do
         let(:xml) do
-          '<?xml version="1.0" encoding="UTF-8"?>' +
-          '<S:Envelope>' +
-            '<S:Body>' +
+          '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+            '<soap:Body>' +
               '<ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">' +
                 '<return>' +
                   '<bairro>Cavaleiro</bairro>' +
@@ -86,8 +83,8 @@ describe Correios::CEP::Parser do
                   '<uf>PE</uf>' +
                 '</return>' +
               '</ns2:consultaCEPResponse>' +
-            '</S:Body>' +
-          '</S:Envelope>'
+            '</soap:Body>' +
+          '</soap:Envelope>'
         end
 
         it 'returns address' do
@@ -100,12 +97,17 @@ describe Correios::CEP::Parser do
 
     context 'when address is not found' do
       let(:xml) do
-        '<?xml version="1.0" encoding="UTF-8"?>' +
-        '<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">' +
-          '<S:Body>' +
-            '<ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/"/>' +
-          '</S:Body>' +
-        '</S:Envelope>'
+        '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+          '<soap:Body>' +
+            '<soap:Fault>' +
+              '<faultcode>soap:Server</faultcode>' +
+              '<faultstring>CEP NAO ENCONTRADO</faultstring>' +
+              '<detail>' +
+                '<ns2:SigepClienteException xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">CEP NAO ENCONTRADO</ns2:SigepClienteException>' +
+              '</detail>' +
+            '</soap:Fault>' +
+          '</soap:Body>' +
+        '</soap:Envelope>'
       end
 
       it 'returns empty hash' do
