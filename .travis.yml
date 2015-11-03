@@ -6,3 +6,5 @@ rvm:
   - 2.1.7
   - 2.2.3
 script: bundle exec rspec
+cache: bundler
+sudo: false
