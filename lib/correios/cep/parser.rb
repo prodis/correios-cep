@@ -10,10 +10,10 @@ module Correios
         'uf'           => :state,
         'cep'          => :zipcode,
         'complemento'  => :complement,
-        'complemento2' => :complement2,
+        'complemento2' => :complement2
       }.freeze
 
-      def address(xml)
+      def hash(xml)
         doc = Ox.parse(xml)
 
         return_node = find_node(doc.nodes, 'return')

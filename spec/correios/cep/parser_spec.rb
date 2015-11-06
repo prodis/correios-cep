@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Correios::CEP::Parser do
-  describe '#address' do
+  describe '#hash' do
     let(:expected_address) do
       {
         address: 'Rua Fernando Amorim',
@@ -36,7 +36,7 @@ describe Correios::CEP::Parser do
         end
 
         it 'returns address' do
-          expect(subject.address(xml)).to eq expected_address
+          expect(subject.hash(xml)).to eq expected_address
         end
       end
 
@@ -63,7 +63,7 @@ describe Correios::CEP::Parser do
         it 'returns address' do
           expected_address[:complement] = 'de 1500 até o fim'
 
-          expect(subject.address(xml)).to eq expected_address
+          expect(subject.hash(xml)).to eq expected_address
         end
       end
 
@@ -90,7 +90,7 @@ describe Correios::CEP::Parser do
         it 'returns address' do
           expected_address[:complement] = 'de 1500 até o fim (zona mista)'
 
-          expect(subject.address(xml)).to eq expected_address
+          expect(subject.hash(xml)).to eq expected_address
         end
       end
     end
@@ -111,7 +111,7 @@ describe Correios::CEP::Parser do
       end
 
       it 'returns empty hash' do
-        expect(subject.address(xml)).to eq({})
+        expect(subject.hash(xml)).to eq({})
       end
     end
   end

@@ -13,7 +13,7 @@ describe Correios::CEP::AddressFinder do
 
     before do
       allow(web_service).to receive(:request).with(cep).and_return(web_service_response)
-      allow(parser).to receive(:address).with(web_service_response).and_return(address)
+      allow(parser).to receive(:hash).with(web_service_response).and_return(address)
     end
 
     describe '#get' do
@@ -37,10 +37,8 @@ describe Correios::CEP::AddressFinder do
       'is empty' => ''
     },
     'zipcode in invalid format (valid format: 00000-000)' => {
-      'is less than 8 digits' => '1234567',
-      'is greather than 8 digits' => '123456789',
-      'is in invalid format' => '1234-5678',
-      'is not numeric' => 'abcdefgh'
+      'has less than 8 digits' => '1234567',
+      'has invalid format' => '1234-5678'
     }
   }.each do |error_message, values|
     values.each do |text, value|

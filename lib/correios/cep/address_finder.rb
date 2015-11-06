@@ -11,7 +11,7 @@ module Correios
         validate(zipcode)
 
         response = web_service.request(zipcode)
-        parser.address(response)
+        parser.hash(response)
       end
 
       def self.get(zipcode, args = {})
