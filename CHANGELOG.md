@@ -1,5 +1,6 @@
 | Version | Changes |
 | ------- | ------- |
+| 0.6.0   | Minimal required Ruby version from now is 2.0.0. |
 | 0.5.1   | Zipcode input validation improvement. |
 | 0.5.0   | Handle errors returned from Correios web service. [Issue #10](https://github.com/prodis/correios-cep/issues/10); Zipcode input validation. |
 | 0.4.0   | Replace Nokogiri by Ox. [Issue #3](https://github.com/prodis/correios-cep/issues/3) |
