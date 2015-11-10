@@ -1,6 +1,7 @@
 require 'correios-cep'
 require 'coveralls'
 require 'vcr'
+require 'support/fixture'
 
 Coveralls.wear!
 

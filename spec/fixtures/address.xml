@@ -1,0 +1,16 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns2:consultaCEPResponse xmlns:ns2="http://cliente.bean.master.sigep.bsb.correios.com.br/">
+      <return>
+        <bairro>Cavaleiro</bairro>
+        <cep>54250610</cep>
+        <cidade>Jaboatão dos Guararapes</cidade>
+        <complemento></complemento>
+        <complemento2></complemento2>
+        <end>Rua Fernando Amorim</end>
+        <id>0</id>
+        <uf>PE</uf>
+      </return>
+    </ns2:consultaCEPResponse>
+  </soap:Body>
+</soap:Envelope>
