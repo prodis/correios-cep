@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = Gem::Requirement.new('>= 1.9.2')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.0.0')
 
   spec.add_dependency 'log-me', '= 0.0.8'
   spec.add_dependency 'ox',     '~> 2.2.2'
