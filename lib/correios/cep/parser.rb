@@ -1,5 +1,3 @@
-require 'ox'
-
 module Correios
   module CEP
     class Parser
@@ -12,6 +10,18 @@ module Correios
         'complemento'  => :complement,
         'complemento2' => :complement2
       }.freeze
+
+      ADDRESS_NOT_FOUND_ERROR = 'CEP NAO ENCONTRADO'
+
+      def address(xml)
+        address = Address.parse(xml)
+        return address if address.has_content?
+
+        error_message = extract_error_message(xml)
+        return nil if error_message == ADDRESS_NOT_FOUND_ERROR
+
+        raise error_message || 'Unknown error'
+      end
 
       def hash(xml)
         doc = Ox.parse(xml)
@@ -29,6 +39,10 @@ module Correios
       end
 
       private
+
+      def extract_error_message(xml)
+        return $1 if xml =~ /<faultstring>(.*)<\/faultstring>/
+      end
 
       def find_node(nodes, name)
         node = nodes.last
