@@ -43,6 +43,15 @@ describe Correios::CEP::Address do
 
       it { should be false }
     end
+
+    context 'when compares with other kind of object' do
+      subject do
+        address = described_class.new
+        address == :address
+      end
+
+      it { should be false }
+    end
   end
 
   describe '#has_content?' do

@@ -12,6 +12,8 @@ module Correios
       element :complemento2, as: :complement2
 
       def ==(other)
+        return false unless other.is_a?(self.class)
+
         instance_variables.each do |attr|
           return false unless self.instance_variable_get(attr) == other.instance_variable_get(attr)
         end
