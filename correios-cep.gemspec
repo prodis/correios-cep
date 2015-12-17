@@ -20,13 +20,13 @@ Gem::Specification.new do |spec|
   spec.platform = Gem::Platform::RUBY
   spec.required_ruby_version = Gem::Requirement.new('>= 2.0.0')
 
-  spec.add_dependency 'log-me', '= 0.0.8'
+  spec.add_dependency 'log-me', '~> 0.0.10'
   spec.add_dependency 'ox',     '~> 2.2.2'
 
-  spec.add_development_dependency 'coveralls', '~> 0.8.3'
+  spec.add_development_dependency 'coveralls', '~> 0.8.10'
   spec.add_development_dependency 'pry',       '~> 0.10.3'
   spec.add_development_dependency 'rake',      '~> 10.4.2'
-  spec.add_development_dependency 'rspec',     '~> 3.3.0'
+  spec.add_development_dependency 'rspec',     '~> 3.4'
   spec.add_development_dependency 'vcr',       '~> 3.0.0'
-  spec.add_development_dependency 'webmock',   '~> 1.22.2'
+  spec.add_development_dependency 'webmock',   '~> 1.22'
 end
