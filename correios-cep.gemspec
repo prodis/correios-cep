@@ -5,7 +5,7 @@ require 'correios/cep/version'
 Gem::Specification.new do |spec|
   spec.name          = 'correios-cep'
   spec.version       = Correios::CEP::VERSION
-  spec.author        = 'Prodis a.k.a. Fernando Hamasaki de Amorim'
+  spec.author        = 'Fernando Hamasaki de Amorim a.k.a. Prodis'
   spec.email         = 'prodis@gmail.com'
   spec.summary       = 'Correios CEP gem gets updated Brazilian address from a zipcode, directly from Correios database. No HTML parsers.'
   spec.description   = spec.summary
@@ -22,12 +22,12 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'log-me', '~> 0.0.10'
   spec.add_dependency 'ox', '~> 2.2'
-  spec.add_dependency 'sax-machine', '~> 1.3.2'
+  spec.add_dependency 'sax-machine', '~> 1.3'
 
-  spec.add_development_dependency 'coveralls', '~> 0.8.10'
-  spec.add_development_dependency 'pry',       '~> 0.10.3'
-  spec.add_development_dependency 'rake',      '~> 10.4.2'
+  spec.add_development_dependency 'coveralls', '~> 0.8'
+  spec.add_development_dependency 'pry',       '~> 0.10'
+  spec.add_development_dependency 'rake',      '~> 10.4'
   spec.add_development_dependency 'rspec',     '~> 3.4'
-  spec.add_development_dependency 'vcr',       '~> 3.0.0'
+  spec.add_development_dependency 'vcr',       '~> 3.0'
   spec.add_development_dependency 'webmock',   '~> 1.22'
 end
