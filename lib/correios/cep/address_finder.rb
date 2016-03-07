@@ -6,6 +6,9 @@ module Correios
         @parser = args.fetch(:parser, Correios::CEP::Parser.new)
       end
 
+      def find(zipcode)
+      end
+
       def get(zipcode)
         zipcode = zipcode.to_s.strip
         validate(zipcode)
