@@ -67,7 +67,7 @@ module Correios
         Correios::CEP.log_response(response)
         response
       rescue EOFError
-        retry if (retries += 1) < 3 || raise
+        retry if (retries += 1) < Correios::CEP.max_retries || raise
       end
     end
   end

@@ -75,6 +75,15 @@ Correios::CEP.configure do |config|
 end
 ```
 
+### Max retries
+
+Since Correios is not that reliable you may want to retry failed requests. The maximum number of attempts (replays of the original request) after a failed requests can be configured as the following snippet:
+
+```ruby
+Correios::CEP.configure do |config|
+  config.max_retries = 3
+end
+
 ### Log
 
 For default, each request to Correios Web service is logged to STDOUT, with **:info** log level, using the gem [LogMe](http://github.com/prodis/log-me).
