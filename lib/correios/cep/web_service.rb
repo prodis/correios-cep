@@ -4,7 +4,7 @@ require 'uri'
 module Correios
   module CEP
     class WebService
-      URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente'
+      URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente'.freeze
 
       def initialize
         @uri = URI.parse(URL)
@@ -14,15 +14,11 @@ module Correios
       def request(zipcode)
         http = build_http
 
-        request = build_request(zipcode)
-        Correios::CEP.log_request(request, uri.to_s)
-
-        response = http.request(request)
-        Correios::CEP.log_response(response)
-
-        http.finish if http.started?
+        response = request_with_retry { http.request(build_request(zipcode)) }
 
         response.body
+      ensure
+        http.finish if http.started?
       end
 
       private
@@ -48,19 +44,30 @@ module Correios
         request = Net::HTTP::Post.new(uri.path)
         request['Content-Type'] = 'text/xml; charset=utf-8'
         request.body = request_body(zipcode)
+        Correios::CEP.log_request(request, uri.to_s)
+
         request
       end
 
       def request_body(zipcode)
-        '<?xml version="1.0" encoding="UTF-8"?>' +
-        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">' +
-           '<soapenv:Header />' +
-           '<soapenv:Body>' +
-              '<cli:consultaCEP>' +
-                "<cep>#{zipcode}</cep>" +
-              '</cli:consultaCEP>' +
-           '</soapenv:Body>' +
+        '<?xml version="1.0" encoding="UTF-8"?>' \
+        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">' \
+           '<soapenv:Header />' \
+           '<soapenv:Body>' \
+              '<cli:consultaCEP>' \
+                "<cep>#{zipcode}</cep>" \
+              '</cli:consultaCEP>' \
+           '</soapenv:Body>' \
         '</soapenv:Envelope>'
+      end
+
+      def request_with_retry
+        retries ||= 0
+        response = yield
+        Correios::CEP.log_response(response)
+        response
+      rescue EOFError
+        retry if (retries += 1) < 3 || raise
       end
     end
   end

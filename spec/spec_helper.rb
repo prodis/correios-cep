@@ -1,6 +1,7 @@
 require 'correios-cep'
 require 'coveralls'
 require 'vcr'
+require 'webmock/rspec'
 
 Coveralls.wear!
 
@@ -12,8 +13,11 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
   config.default_cassette_options = { :match_requests_on => [:uri, :method, :body] }
   config.cassette_library_dir = 'spec/fixtures/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
 end
+
+WebMock.disable_net_connect!
