@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'correios/cep/config'
 require 'correios/cep/address_finder'
 require 'correios/cep/parser'
