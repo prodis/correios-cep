@@ -5,7 +5,6 @@ require 'uri'
 module Correios
   module CEP
     class WebService
-      URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente'
       CONTENT_TYPE_HEADER = 'text/xml; charset=utf-8'
       BODY_TEMPLATE = '<?xml version="1.0" encoding="UTF-8"?>' \
                       '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"' \
@@ -19,7 +18,7 @@ module Correios
                       '</soapenv:Envelope>'
 
       def initialize
-        @uri = URI.parse(URL)
+        @uri = URI.parse(Correios::CEP.web_service_url)
         @proxy_uri = URI.parse(Correios::CEP.proxy_url)
       end
 
