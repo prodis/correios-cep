@@ -129,7 +129,7 @@ end
 ```ruby
 Correios::CEP.configure do |config|
   config.logger = Rails.logger
-  config.request_timeout = 3
+  config.request_timeout = 3 # seconds
 end
 ```
 
@@ -148,6 +148,7 @@ end
 ### Contributors
 - [Gabriel Givigier Guimarães (givigier)](https://github.com/givigier)
 - [Maury M. Marques (maurymmarques)](https://github.com/maurymmarques)
+- [Rafael Garcia](https://github.com/rafbgarcia)
 
 
 ## Contributing to correios-cep
