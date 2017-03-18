@@ -6,6 +6,17 @@ module Correios
   module CEP
     class WebService
       URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente'
+      CONTENT_TYPE_HEADER = 'text/xml; charset=utf-8'
+      BODY_TEMPLATE = '<?xml version="1.0" encoding="UTF-8"?>' \
+                      '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"' \
+                      ' xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">' \
+                         '<soapenv:Header />' \
+                         '<soapenv:Body>' \
+                            '<cli:consultaCEP>' \
+                              '<cep>%{zipcode}</cep>' \
+                            '</cli:consultaCEP>' \
+                         '</soapenv:Body>' \
+                      '</soapenv:Envelope>'
 
       def initialize
         @uri = URI.parse(URL)
@@ -47,21 +58,9 @@ module Correios
 
       def build_request(zipcode)
         request = Net::HTTP::Post.new(uri.path)
-        request['Content-Type'] = 'text/xml; charset=utf-8'
-        request.body = request_body(zipcode)
+        request['Content-Type'] = CONTENT_TYPE_HEADER
+        request.body = BODY_TEMPLATE % { zipcode: zipcode }
         request
-      end
-
-      def request_body(zipcode)
-        '<?xml version="1.0" encoding="UTF-8"?>' +
-        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">' +
-           '<soapenv:Header />' +
-           '<soapenv:Body>' +
-              '<cli:consultaCEP>' +
-                "<cep>#{zipcode}</cep>" +
-              '</cli:consultaCEP>' +
-           '</soapenv:Body>' +
-        '</soapenv:Envelope>'
       end
     end
   end
