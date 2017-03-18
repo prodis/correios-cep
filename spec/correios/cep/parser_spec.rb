@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 # encoding: UTF-8
-require 'spec_helper'
-
 describe Correios::CEP::Parser do
   describe '#address' do
     let(:expected_address) do
