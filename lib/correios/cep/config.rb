@@ -3,7 +3,7 @@ module Correios
   module CEP
     module Config
       WEB_SERVICE_URL = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente'
-      DEFAULT_REQUEST_TIMEOUT = 5 #seconds
+      DEFAULT_REQUEST_TIMEOUT = 5 # seconds
 
       attr_writer :web_service_url, :proxy_url, :request_timeout
 

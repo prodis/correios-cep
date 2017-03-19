@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 describe Correios::CEP do
   describe '#web_service_url' do
-
     it 'default is Correios::CEP::Config::WEB_SERVICE_URL' do
       expect(Correios::CEP.web_service_url).to eq Correios::CEP::Config::WEB_SERVICE_URL
     end
