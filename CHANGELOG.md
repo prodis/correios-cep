@@ -1,5 +1,6 @@
 | Version | Changes                                                                                                                                    |
 | ------- | -------                                                                                                                                    |
+| 0.6.3   | Improve performance regarding strings.                                                                                                     |
 | 0.6.2   | Update Ox gem to version `2.4`. [PR #14](https://github.com/prodis/correios-cep/pull/14)                                                   |
 | 0.6.1   | Update LogMe gem to version `0.0.10`.                                                                                                      |
 | 0.6.0   | Minimal required Ruby version from now is 2.0.0.                                                                                           |
