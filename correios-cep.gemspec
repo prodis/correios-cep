@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'correios/cep/version'
@@ -7,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Correios::CEP::VERSION
   spec.author        = 'Prodis a.k.a. Fernando Hamasaki de Amorim'
   spec.email         = 'prodis@gmail.com'
-  spec.summary       = 'Correios CEP gem gets updated Brazilian address from a zipcode, directly from Correios database. No HTML parsers.'
+  spec.summary       = 'Correios CEP gem finds updated Brazilian addresses by zipcode, directly from Correios database. No HTML parsers.'
   spec.description   = spec.summary
-  spec.homepage      = 'http://prodis.blog.br/correios-cep-gem-para-consulta-de-enderecos-por-cep'
+  spec.homepage      = 'https://github.com/prodis/correios-cep'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)

@@ -1,5 +1,4 @@
-require 'spec_helper'
-
+# frozen_string_literal: true
 describe Correios::CEP::WebService do
   let(:cep) { '54250610' }
 
