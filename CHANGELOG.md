@@ -1,8 +1,9 @@
 | Version | Changes                                                                                                                                    |
 | ------- | -------                                                                                                                                    |
+| 0.6.4   | Update Ox gem version to `2.4.13`.                                                                                                         |
 | 0.6.3   | Improve performance regarding strings.                                                                                                     |
-| 0.6.2   | Update Ox gem to version `2.4`. [PR #14](https://github.com/prodis/correios-cep/pull/14)                                                   |
-| 0.6.1   | Update LogMe gem to version `0.0.10`.                                                                                                      |
+| 0.6.2   | Update Ox gem version to `2.4`. [PR #14](https://github.com/prodis/correios-cep/pull/14)                                                   |
+| 0.6.1   | Update LogMe gem version to `0.0.10`.                                                                                                      |
 | 0.6.0   | Minimal required Ruby version from now is 2.0.0.                                                                                           |
 | 0.5.1   | Zipcode input validation improvement.                                                                                                      |
 | 0.5.0   | Handle errors returned from Correios web service. [Issue #10](https://github.com/prodis/correios-cep/issues/10); Zipcode input validation. |
