@@ -147,6 +147,7 @@ end
 
 ### Contributors
 - [Gabriel Givigier Guimarães (givigier)](https://github.com/givigier)
+- [Marlon Henry Schweigert (Schweigert)](https://github.com/Schweigert)
 - [Maury M. Marques (maurymmarques)](https://github.com/maurymmarques)
 - [Rafael Garcia (rafbgarcia)](https://github.com/rafbgarcia)
 
