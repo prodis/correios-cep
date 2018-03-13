@@ -1,5 +1,6 @@
 | Version | Changes                                                                                                                                    |
 | ------- | -------                                                                                                                                    |
+| 0.6.6   | Update Ox gem version to `2.8.4`.                                                                                                         |
 | 0.6.5   | Update Ox gem version to `2.8.2`. [PR #17](https://github.com/prodis/correios-cep/pull/17)                                                 |
 | 0.6.4   | Update Ox gem version to `2.4.13`.                                                                                                         |
 | 0.6.3   | Improve performance regarding strings.                                                                                                     |
