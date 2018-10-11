@@ -19,46 +19,17 @@ module Correios
                       '</soapenv:Envelope>'
 
       def initialize
+        HTTP::Options.register_feature(:logging, Correios::CEP::Logging)
         @uri = URI.parse(Correios::CEP.web_service_url)
         @proxy_uri = URI.parse(Correios::CEP.proxy_url)
       end
 
       def request(zipcode)
-        options = build_options(zipcode)
-        request = build_request(options)
-        # Correios::CEP.log_request(request, uri.to_s)
-
-        response = perform_request(request, options)
-        # Correios::CEP.log_response(response)
-
-        response.body.to_s
-      end
-
-      private
-
-      attr_reader :uri, :proxy_uri
-
-      def perform_request(request, options)
-        HTTP::Client.new.perform(request, options)
-      end
-
-      def build_request(options)
-        HTTP::Client.new.build_request(:post, uri, options)
-      end
-
-      def build_options(zipcode)
-        options = {
-          headers: { 'Content-Type' => CONTENT_TYPE_HEADER },
-          body: BODY_TEMPLATE % { zipcode: zipcode }
-        }
-        # if proxy_uri.host != '' && proxy_uri.port != ''
-        #   options[:proxy] = {
-        #     proxy_address:  proxy_uri.host,
-        #     proxy_port:     proxy_uri.port
-        #   }
-        # end
-
-        HTTP::Options.new(options)
+        HTTP
+          .use(logging: {logger: Logger.new(STDOUT)})
+          .headers('Content-Type' => CONTENT_TYPE_HEADER)
+          .post(uri.to_s, body: BODY_TEMPLATE % { zipcode: zipcode })
+          .body
       end
     end
   end
