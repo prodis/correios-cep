@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'net/https'
+# require 'net/https'
+require 'http'
 require 'uri'
 
 module Correios
@@ -23,43 +24,41 @@ module Correios
       end
 
       def request(zipcode)
-        http = build_http
+        options = build_options(zipcode)
+        request = build_request(options)
+        # Correios::CEP.log_request(request, uri.to_s)
 
-        request = build_request(zipcode)
-        Correios::CEP.log_request(request, uri.to_s)
+        response = perform_request(request, options)
+        # Correios::CEP.log_response(response)
 
-        response = http.request(request)
-        Correios::CEP.log_response(response)
-
-        http.finish if http.started?
-
-        response.body
+        response.body.to_s
       end
 
       private
 
       attr_reader :uri, :proxy_uri
 
-      def build_http
-        Net::HTTP.start(
-          uri.host,
-          uri.port,
-          proxy_uri.host,
-          proxy_uri.port,
-          nil,
-          nil,
-          use_ssl: true,
-          verify_mode: OpenSSL::SSL::VERIFY_NONE,
-          open_timeout: Correios::CEP.request_timeout,
-          read_timeout: Correios::CEP.request_timeout
-        )
+      def perform_request(request, options)
+        HTTP::Client.new.perform(request, options)
       end
 
-      def build_request(zipcode)
-        request = Net::HTTP::Post.new(uri.path)
-        request['Content-Type'] = CONTENT_TYPE_HEADER
-        request.body = BODY_TEMPLATE % { zipcode: zipcode }
-        request
+      def build_request(options)
+        HTTP::Client.new.build_request(:post, uri, options)
+      end
+
+      def build_options(zipcode)
+        options = {
+          headers: { 'Content-Type' => CONTENT_TYPE_HEADER },
+          body: BODY_TEMPLATE % { zipcode: zipcode }
+        }
+        # if proxy_uri.host != '' && proxy_uri.port != ''
+        #   options[:proxy] = {
+        #     proxy_address:  proxy_uri.host,
+        #     proxy_port:     proxy_uri.port
+        #   }
+        # end
+
+        HTTP::Options.new(options)
       end
     end
   end

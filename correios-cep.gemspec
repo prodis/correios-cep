@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'log-me', '~> 0.0.10'
   spec.add_dependency 'ox', '~> 2.9'
+  spec.add_dependency 'http', '~> 3.3'
 
   spec.add_development_dependency 'coveralls', '~> 0.8.21'
   spec.add_development_dependency 'pry', '~> 0.11.3'
