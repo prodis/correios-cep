@@ -19,7 +19,6 @@ module Correios
                       '</soapenv:Envelope>'
 
       def initialize
-        HTTP::Options.register_feature(:logging, Correios::CEP::Logging)
         @uri = URI.parse(Correios::CEP.web_service_url)
         @proxy_uri = URI.parse(Correios::CEP.proxy_url)
       end
@@ -28,8 +27,9 @@ module Correios
         HTTP
           .use(logging: {logger: Logger.new(STDOUT)})
           .headers('Content-Type' => CONTENT_TYPE_HEADER)
-          .post(uri.to_s, body: BODY_TEMPLATE % { zipcode: zipcode })
+          .post(@uri.to_s, body: BODY_TEMPLATE % { zipcode: zipcode })
           .body
+          .to_s
       end
     end
   end
