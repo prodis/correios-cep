@@ -24,9 +24,7 @@ module Correios
 
       def request(zipcode)
         http_setup
-          .use(logging: {logger: Logger.new(STDOUT)})
-          .headers('Content-Type' => CONTENT_TYPE_HEADER)
-          .post(@uri.to_s, body: BODY_TEMPLATE % { zipcode: zipcode })
+          .post(@uri.to_s, body: BODY_TEMPLATE % { zipcode: zipcode }, ssl_context: ssl_setup)
           .body
           .to_s
       end
@@ -34,8 +32,17 @@ module Correios
       private
 
       def http_setup
-        return HTTP.via(@proxy_uri.host, @proxy_uri.port) if @proxy_uri != ''
-        HTTP
+        client = HTTP
+        client = HTTP.via(@proxy_uri.host, @proxy_uri.port) if @proxy_uri.host
+        client
+          .timeout(connect: Correios::CEP.request_timeout)
+          .use(logging: {logger: Logger.new(STDOUT)})
+          .headers('Content-Type' => CONTENT_TYPE_HEADER)
+      end
+
+      def ssl_setup
+        ssl = OpenSSL::SSL::SSLContext.new
+        ssl.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
     end
   end
