@@ -23,12 +23,19 @@ module Correios
       end
 
       def request(zipcode)
-        HTTP
+        http_setup
           .use(logging: {logger: Logger.new(STDOUT)})
           .headers('Content-Type' => CONTENT_TYPE_HEADER)
           .post(@uri.to_s, body: BODY_TEMPLATE % { zipcode: zipcode })
           .body
           .to_s
+      end
+
+      private
+
+      def http_setup
+        return HTTP.via(@proxy_uri.host, @proxy_uri.port) if @proxy_uri != ''
+        HTTP
       end
     end
   end
