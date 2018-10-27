@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# require 'net/https'
 require 'http'
 require 'uri'
 
