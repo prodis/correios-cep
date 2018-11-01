@@ -43,6 +43,7 @@ module Correios
       end
 
       def join_complements(address)
+        address[:complement] = "" if address[:complement].nil?
         address[:complement] += " #{address.delete(:complement2)}"
         address[:complement].strip!
       end
