@@ -1,5 +1,6 @@
 | Version | Changes                                                                                                                                    |
 | ------- | -------                                                                                                                                    |
+| 0.6.8   | Fix parsing bug when Correios API omits "complemento" XML node in response.                                                                |
 | 0.6.7   | Update Ox gem version to `2.9`.                                                                                                            |
 | 0.6.6   | Update Ox gem version to `2.8.4`.                                                                                                          |
 | 0.6.5   | Update Ox gem version to `2.8.2`. [PR #17](https://github.com/prodis/correios-cep/pull/17)                                                 |
