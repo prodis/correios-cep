@@ -31,9 +31,11 @@ module Correios
 
       private
 
+      def client
+        @proxy_uri.host ? HTTP.via(@proxy_uri.host, @proxy_uri.port) : HTTP
+      end
+
       def http_setup
-        client = HTTP
-        client = HTTP.via(@proxy_uri.host, @proxy_uri.port) if @proxy_uri.host
         client
           .timeout(connect: Correios::CEP.request_timeout)
           .use(logging: {logger: Correios::CEP.logger})
