@@ -24,7 +24,7 @@ module Correios
 
       def request(zipcode)
         http_setup
-          .post(@uri.to_s, body: BODY_TEMPLATE % { zipcode: zipcode }, ssl_context: ssl_setup)
+          .post(@uri.to_s, body: request_body(zipcode), ssl_context: ssl_setup)
           .body
           .to_s
       end
@@ -38,6 +38,10 @@ module Correios
           .timeout(connect: Correios::CEP.request_timeout)
           .use(logging: {logger: Logger.new(STDOUT)})
           .headers('Content-Type' => CONTENT_TYPE_HEADER)
+      end
+
+      def request_body(zipcode)
+        BODY_TEMPLATE % { zipcode: zipcode }
       end
 
       def ssl_setup
