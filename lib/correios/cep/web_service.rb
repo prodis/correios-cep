@@ -47,6 +47,7 @@ module Correios
       def ssl_setup
         ssl = OpenSSL::SSL::SSLContext.new
         ssl.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        ssl
       end
     end
   end
