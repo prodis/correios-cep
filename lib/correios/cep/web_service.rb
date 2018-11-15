@@ -36,7 +36,7 @@ module Correios
         client = HTTP.via(@proxy_uri.host, @proxy_uri.port) if @proxy_uri.host
         client
           .timeout(connect: Correios::CEP.request_timeout)
-          .use(logging: {logger: Logger.new(STDOUT)})
+          .use(logging: {logger: Correios::CEP.logger})
           .headers('Content-Type' => CONTENT_TYPE_HEADER)
       end
 
