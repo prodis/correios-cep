@@ -20,26 +20,6 @@ describe Correios::CEP do
     end
   end
 
-  describe '#proxy_url' do
-    it 'default is empty' do
-      expect(Correios::CEP.proxy_url).to eq ''
-    end
-
-    context 'when set proxy URL' do
-      let(:url) { 'http://10.20.30.40:8888' }
-
-      around do |example|
-        Correios::CEP.proxy_url = url
-        example.run
-        Correios::CEP.proxy_url = ''
-      end
-
-      it 'returns the given proxy URL' do
-        expect(Correios::CEP.proxy_url).to eq url
-      end
-    end
-  end
-
   describe "#request_timeout" do
     it "default is 5" do
       expect(Correios::CEP.request_timeout).to eq 5
@@ -58,4 +38,3 @@ describe Correios::CEP do
     end
   end
 end
-

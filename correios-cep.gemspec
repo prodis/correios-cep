@@ -21,7 +21,6 @@ Gem::Specification.new do |spec|
   spec.platform = Gem::Platform::RUBY
   spec.required_ruby_version = Gem::Requirement.new('>= 2.2.0')
 
-  spec.add_dependency 'log-me', '~> 0.0.10'
   spec.add_dependency 'ox', '~> 2.9'
   spec.add_dependency 'http', '~> 4.0.0'
 
