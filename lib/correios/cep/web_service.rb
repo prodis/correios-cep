@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'net/https'
+require 'http'
 require 'uri'
 
 module Correios
@@ -23,43 +23,33 @@ module Correios
       end
 
       def request(zipcode)
-        http = build_http
-
-        request = build_request(zipcode)
-        Correios::CEP.log_request(request, uri.to_s)
-
-        response = http.request(request)
-        Correios::CEP.log_response(response)
-
-        http.finish if http.started?
-
-        response.body
+        http_setup
+          .post(@uri.to_s, body: request_body(zipcode), ssl_context: ssl_setup)
+          .body
+          .to_s
       end
 
       private
 
-      attr_reader :uri, :proxy_uri
-
-      def build_http
-        Net::HTTP.start(
-          uri.host,
-          uri.port,
-          proxy_uri.host,
-          proxy_uri.port,
-          nil,
-          nil,
-          use_ssl: true,
-          verify_mode: OpenSSL::SSL::VERIFY_NONE,
-          open_timeout: Correios::CEP.request_timeout,
-          read_timeout: Correios::CEP.request_timeout
-        )
+      def client
+        @proxy_uri.host ? HTTP.via(@proxy_uri.host, @proxy_uri.port) : HTTP
       end
 
-      def build_request(zipcode)
-        request = Net::HTTP::Post.new(uri.path)
-        request['Content-Type'] = CONTENT_TYPE_HEADER
-        request.body = BODY_TEMPLATE % { zipcode: zipcode }
-        request
+      def http_setup
+        client
+          .timeout(connect: Correios::CEP.request_timeout)
+          .use(logging: {logger: Correios::CEP.logger})
+          .headers('Content-Type' => CONTENT_TYPE_HEADER)
+      end
+
+      def request_body(zipcode)
+        BODY_TEMPLATE % { zipcode: zipcode }
+      end
+
+      def ssl_setup
+        ssl = OpenSSL::SSL::SSLContext.new
+        ssl.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        ssl
       end
     end
   end
