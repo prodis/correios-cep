@@ -5,7 +5,6 @@ require 'uri'
 module Correios
   module CEP
     class WebService
-      CONTENT_TYPE_HEADER = 'text/xml; charset=utf-8'
       BODY_TEMPLATE = '<?xml version="1.0" encoding="UTF-8"?>' \
                       '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"' \
                       ' xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">' \
@@ -16,40 +15,58 @@ module Correios
                             '</cli:consultaCEP>' \
                          '</soapenv:Body>' \
                       '</soapenv:Envelope>'
-
-      def initialize
-        @uri = URI.parse(Correios::CEP.web_service_url)
-        @proxy_uri = URI.parse(Correios::CEP.proxy_url)
-      end
+      HTTP_HEADERS = {
+        'Content-Type' => 'text/xml; charset=utf-8',
+        'User-Agent' => "correios-cep/#{Correios::CEP::VERSION}"
+      }.freeze
 
       def request(zipcode)
-        http_setup
-          .post(@uri.to_s, body: request_body(zipcode), ssl_context: ssl_setup)
-          .body
-          .to_s
+        response = http.post(Correios::CEP.web_service_url,
+                             body: request_body(zipcode),
+                             ssl_context: ssl_context)
+        response.body.to_s
       end
 
       private
 
-      def client
-        @proxy_uri.host ? HTTP.via(@proxy_uri.host, @proxy_uri.port) : HTTP
+      def http
+        http = HTTP.headers(HTTP_HEADERS)
+                   .timeout(
+                      connect: Correios::CEP.request_timeout,
+                      read: Correios::CEP.request_timeout
+                   )
+        http = http_proxy(http)
+        http = http_log(http)
+
+        http
       end
 
-      def http_setup
-        client
-          .timeout(connect: Correios::CEP.request_timeout)
-          .use(logging: {logger: Correios::CEP.logger})
-          .headers('Content-Type' => CONTENT_TYPE_HEADER)
+      def http_proxy(http)
+        return http if proxy_uri.nil?
+
+        http.via(proxy_uri.host, proxy_uri.port)
+      end
+
+      def http_log(http)
+        return http if Correios::CEP.logger.nil?
+
+        http.use(logging: { logger: Correios::CEP.logger })
       end
 
       def request_body(zipcode)
         BODY_TEMPLATE % { zipcode: zipcode }
       end
 
-      def ssl_setup
-        ssl = OpenSSL::SSL::SSLContext.new
-        ssl.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        ssl
+      def ssl_context
+        context = OpenSSL::SSL::SSLContext.new
+        context.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        context
+      end
+
+      def proxy_uri
+        return nil if Correios::CEP.proxy_url.nil?
+
+        @proxy_uri ||= URI.parse(Correios::CEP.proxy_url)
       end
     end
   end
