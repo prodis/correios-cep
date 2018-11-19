@@ -1,5 +1,6 @@
 | Version | Changes                                                                                                                                    |
 | ------- | -------                                                                                                                                    |
+| 0.7.1   | Fix uninitialised constant error [Issue #23](https://github.com/prodis/correios-cep/issues/23)                                             |
 | 0.7.0   | Replace Net::HTTP to HTTP gem. [Issue #15](https://github.com/prodis/correios-cep/issues/15); Remove `log-me` gem; Minimal required Ruby version now is 2.2.0. |
 | 0.6.8   | Fix parsing bug when Correios API omits "complemento" XML node in response.                                                                |
 | 0.6.7   | Update Ox gem version to `2.9`.                                                                                                            |
