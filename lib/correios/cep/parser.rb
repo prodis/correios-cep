@@ -40,7 +40,7 @@ module Correios
       end
 
       def text_for(element)
-        element.text.to_s.force_encoding(Encoding::UTF_8)
+        element.text.nil? ? "" : element.text.force_encoding(Encoding::UTF_8)
       end
 
       def join_complements(address)
