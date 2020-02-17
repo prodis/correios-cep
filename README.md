@@ -103,12 +103,7 @@ end
 ![Prodis Logo](https://camo.githubusercontent.com/c01a3ebca1c000d7586a998bb07316c8cb784ce5/687474703a2f2f70726f6469732e6e65742e62722f696d616765732f70726f6469735f3135302e676966)
 
 ### Contributors
-- [Gabriel Givigier Guimarães (givigier)](https://github.com/givigier)
-- [Marlon Henry Schweigert (Schweigert)](https://github.com/Schweigert)
-- [Mateus Luiz (mateusluizfb)](https://github.com/mateusluizfb)
-- [Maury M. Marques (maurymmarques)](https://github.com/maurymmarques)
-- [Rafael Garcia (rafbgarcia)](https://github.com/rafbgarcia)
-
+https://github.com/prodis/correios-cep/graphs/contributors
 
 ## Contributing
 
