@@ -20,10 +20,12 @@ module Correios
         return_node = find_node(doc.nodes, 'return')
         return {} if return_node.nil?
 
-        address = {}
-        return_node.nodes.each do |element|
-          address[ADDRESS_MAP[element.name]] = text_for(element) if ADDRESS_MAP[element.name]
-        end
+        address =
+          return_node.nodes.reduce({}) do |address_accumulator, element|
+            key = ADDRESS_MAP[element.name]
+            address_accumulator[key] = text_for(element) if key
+            address_accumulator
+          end
 
         join_complements(address)
         address
