@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.2.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
 
   spec.add_dependency 'ox', '~> 2.13'
   spec.add_dependency 'http', '~> 4.3'
