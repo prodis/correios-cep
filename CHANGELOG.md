@@ -6,6 +6,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.8.0] - 2020-02-17
+### Changed
+- Update Ox gem version to `2.13`.
+- Update HTTP gem version to `4.3`.
+- Minimal required Ruby version now is 2.3.0.
+
 ## [0.7.1] - 2018-11-19
 ### Fixed
 - Fix uninitialised constant error [Issue #23](https://github.com/prodis/correios-cep/issues/23)
