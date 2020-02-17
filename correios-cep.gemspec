@@ -24,10 +24,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'ox', '~> 2.13'
   spec.add_dependency 'http', '~> 4.3'
 
-  spec.add_development_dependency 'coveralls', '~> 0.8.21'
-  spec.add_development_dependency 'pry', '~> 0.11.3'
-  spec.add_development_dependency 'rake', '~> 12.3'
-  spec.add_development_dependency 'rspec', '~> 3.7'
-  spec.add_development_dependency 'vcr', '~> 4.0'
-  spec.add_development_dependency 'webmock', '~> 3.3'
+  spec.add_development_dependency 'coveralls', '~> 0.8.23'
+  spec.add_development_dependency 'pry', '~> 0.12.2'
+  spec.add_development_dependency 'rake', '~> 13.0'
+  spec.add_development_dependency 'rspec', '~> 3.9'
+  spec.add_development_dependency 'vcr', '~> 5.1'
+  spec.add_development_dependency 'webmock', '~> 3.8'
 end
